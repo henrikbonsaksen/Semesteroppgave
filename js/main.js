@@ -84,7 +84,7 @@ function showBox(id) {
   var boxes = document.getElementsByClassName("infoBox");
   var box = document.getElementById(id);
   for (var i = 0; i < boxes.length; i++) {
-    boxes[i].classList.remove;
+    boxes[i].classList.replace("show", "hidden");
   }
 
   if (box.classList.contains("show")) {
