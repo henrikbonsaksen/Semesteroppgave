@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="js/main.js"></script>
+    <title>Semesteroppgave</title>
+  </head>
+
+  <body>
+
+  <!-- navigering -->
+  <header>
+    <ul class="navbar">
+      <li onclick="showBox('utdanning')" class="navbutton"><a href="#1">Utdanning</a></li>
+      <li onclick="showBox('befolkning')" class="navbutton"><a href="#2">Befolkning</a></li>
+      <li onclick="showBox('sysselsatte')" class="navbutton"><a href="#3">Sysselsatte</a></li>
+    </ul>
+  </header>
+
+ 
+  <!-- hovedinnhold -->
+  <div class="container center">
+    <div id="Introduksjon">
+      <p><br>
+        Velkommen til vårt verktøy for å vise data om Norges befolkning.<p>
+        Med dette verktøyet kan du gjøre søk på Norges befolkning, sysselsatte og utdanning.
+      <p>Dataene er hentet fra  <a href="https://www.ssb.no/">SSB sin hjemmeside</a></p>
+      PS! dataene kan inneholde feil.
+      </p>
+    </div>
+    <br>
+
+    <div class="infoBox hidden" id="utdanning">
+      <br>
+      <h2>Utdanning</h2>
+      <div id="oversikt">
+        <p>
+        Oversikt skal vise alle kommunene med navn, kommunenummer, og siste
+        måling av total befolkning (“Begge kjønn”)
+        </p>
+      </div>
+
+      <div id="detaljer">
+        <table>
+          <thread>
+            <tr>
+              <td>Row 1</td>
+              <td>Row 2</td>
+              <td>Row 3</td>
+            </tr>
+          </thread>
+          <tbody>
+            <tr>
+              <td>Value 1</td>
+              <td>Value 2</td>
+              <td>Value 3</td>
+            </tr>
+
+            <tr>
+              <td>Value 1</td>
+              <td>Value 2</td>
+              <td>Value 3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="sammenligning">
+      </div>
+    </div>
+    <br>
+
+    <div class="infoBox hidden"  id="befolkning">
+      <br>
+      <h2>Befolkning</h2>
+      <div id="oversikt">
+      </div>
+
+      <div id="detaljer" class="detaljer">
+        <table>
+          <thread>
+            <tr>
+              <td>Row 1</td>
+              <td>Row 2</td>
+              <td>Row 3</td>
+            </tr>
+          </thread>
+          <tbody>
+            <tr>
+              <td>Value 1</td>
+              <td>Value 2</td>
+              <td>Value 3</td>
+            </tr>
+
+            <tr>
+              <td>Value 1</td>
+              <td>Value 2</td>
+              <td>Value 3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="sammenligning">
+      </div>
+    </div>
+    <br>
+
+    <div class="infoBox hidden"  id="sysselsatte">
+      <br>
+      <h2>Sysselsatte</h2>
+      <div id="oversikt">
+      </div>
+
+      <div id="detaljer">
+        <table>
+          <thread>
+            <tr>
+              <td>Row 1</td>
+              <td>Row 2</td>
+              <td>Row 3</td>
+            </tr>
+          </thread>
+          <tbody>
+            <tr>
+              <td>Value 1</td>
+              <td>Value 2</td>
+              <td>Value 3</td>
+            </tr>
+
+            <tr>
+              <td>Value 1</td>
+              <td>Value 2</td>
+              <td>Value 3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="sammenligning">
+      </div>
+    </div>
+    <br>
+  </div>
+
+
+  <footer>
+    <br><br>
+    Oppgavebesvarelse i emnet INFO134
+  </footer>
+
+<!-- roten til alt det onde: -->
+
+
+
+  </body>
+</html>
