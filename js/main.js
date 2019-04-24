@@ -28,6 +28,9 @@ function loadJSON(url, elmntid) {
   xhttp.send();
 };
 
+
+Lager dynamisk tabellen
+
 function generateTableHead(table, data) {
   let thead = table.createTHead();
   let row = thead.insertRow();
@@ -107,4 +110,4 @@ function showBox(id) {
 
 
 
-// 
+//
