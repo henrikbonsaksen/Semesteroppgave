@@ -22,7 +22,7 @@ function loadJSON(url, elmntid) {
       for (by in json.elementer) {
         // document.createElement(document.getElementById(elmntid).innerHTML = ("<td>"));
 
-        document.getElementById(elmntid).innerHTML = by;
+        document.getElementById(elmntid).innerHTML = byer;
         byer.push(by);
       };
       // document.getElementById(elmntid).innerHTML =
@@ -32,6 +32,41 @@ function loadJSON(url, elmntid) {
   xhttp.open("GET", url, true);
   xhttp.send();
 };
+
+// // CREATE DYNAMIC TABLE.
+//      var table = document.createElement("table");
+//
+//      // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+//
+//      var tr = table.insertRow(-1);                   // TABLE ROW.
+//
+//      for (var i = 0; i < col.length; i++) {
+//          var th = document.createElement("th");      // TABLE HEADER.
+//          th.innerHTML = col[i];
+//          tr.appendChild(th);
+//      }
+//
+//      // ADD JSON DATA TO THE TABLE AS ROWS.
+//      for (var i = 0; i < myBooks.length; i++) {
+//
+//          tr = table.insertRow(-1);
+//
+//          for (var j = 0; j < col.length; j++) {
+//              var tabCell = tr.insertCell(-1);
+//              tabCell.innerHTML = myBooks[i][col[j]];
+//          }
+//      }
+//
+//      // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+//      var divContainer = document.getElementById("showData");
+//      divContainer.innerHTML = "";
+//      divContainer.appendChild(table);
+//  }
+
+
+
+
+
 
 // let utd = new Population(utdanning_wildboy);
 let obj = new Population(befolkning_wildboy);
@@ -59,9 +94,6 @@ function Population(url) {
     // console.log(page);
   }
 };
-
-
-
 
 // Merk at et kommunenummer er fire heltall, og Haldens
 // kommunenummer er “0101”, altså inkludert et ledende 0. Det kan derfor være lurt å representere kommunenummer
