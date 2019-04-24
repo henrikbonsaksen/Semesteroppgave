@@ -39,6 +39,9 @@ function Population(url) {
   }
 };
 
+
+
+
 // Merk at et kommunenummer er fire heltall, og Haldens
 // kommunenummer er “0101”, altså inkludert et ledende 0. Det kan derfor være lurt å representere kommunenummer
 // som tekstverdier, eller finne en annen løsning for dette.
