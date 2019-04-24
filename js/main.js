@@ -8,7 +8,7 @@ let beskrivelser = "http://wildboy.uib.no/~tpe056/folk/";
 let utdanning_wildboy = "http://wildboy.uib.no/~tpe056/folk/85432.json";
 let befolkning_wildboy = "http://wildboy.uib.no/~tpe056/folk/104857.json";
 let sysselsatte_wildboy = "http://wildboy.uib.no/~tpe056/folk/100145.json";
- 
+
 // HINT: dot otation eller bracket notation
 
 let utd = new Population(utdanning_wildboy);
@@ -86,6 +86,21 @@ function showBox(id) {
     box.classList.replace("hidden", "show");
   }
 };
+
+
+function openBox(boxType) {
+  var box = document.getElementById(boxType);
+  var boxes = document.getElementsByClassName("infoBox");
+  var navElements = document.getElementByTagName("nav")[0].firstElementchild.children;
+  for(var i = 0; i < boxes.lenght; i++){
+    boxes[i].classList.remove("showBox");
+  }
+  if(box.classList.contains("showBox") === false) {
+    box.classList.add("showBox");
+    for(var i = 0; i < navElements.lenght; i++) {
+      navElements[i].classList.remove("activeNav");
+      if(navElements[i].innerHTML === boxType) {
+        navElements[i].classList.add("activeNav");
 
 
 
