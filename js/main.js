@@ -33,36 +33,30 @@ function loadJSON(url, elmntid) {
   xhttp.send();
 };
 
-// // CREATE DYNAMIC TABLE.
-//      var table = document.createElement("table");
-//
-//      // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
-//
-//      var tr = table.insertRow(-1);                   // TABLE ROW.
-//
-//      for (var i = 0; i < col.length; i++) {
-//          var th = document.createElement("th");      // TABLE HEADER.
-//          th.innerHTML = col[i];
-//          tr.appendChild(th);
-//      }
-//
-//      // ADD JSON DATA TO THE TABLE AS ROWS.
-//      for (var i = 0; i < myBooks.length; i++) {
-//
-//          tr = table.insertRow(-1);
-//
-//          for (var j = 0; j < col.length; j++) {
-//              var tabCell = tr.insertCell(-1);
-//              tabCell.innerHTML = myBooks[i][col[j]];
-//          }
-//      }
-//
-//      // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-//      var divContainer = document.getElementById("showData");
-//      divContainer.innerHTML = "";
-//      divContainer.appendChild(table);
-//  }
-
+// function generateTableHead(table, data) {
+//   let thead = table.createTHead();
+//   let row = thead.insertRow();
+//   for (let key of data) {
+//     let th = document.createElement("th");
+//     let text = document.createTextNode(key);
+//     th.appendChild(text);
+//     row.appendChild(th);
+//   }
+// }
+// function generateTable(table, data) {
+//   for (let element of data) {
+//     let row = table.insertRow();
+//     for (key in element) {
+//       let cell = row.insertCell();
+//       let text = document.createTextNode(element[key]);
+//       cell.appendChild(text);
+//     }
+//   }
+// }
+// let table = document.querySelector("table");
+// let data = Object.keys(mountains[0]);
+// generateTableHead(table, data);
+// generateTable(table, mountains);
 
 
 
