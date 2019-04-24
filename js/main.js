@@ -88,19 +88,19 @@ function showBox(id) {
 };
 
 
-function openBox(boxType) {
-  var box = document.getElementById(boxType);
-  var boxes = document.getElementsByClassName("infoBox");
-  var navElements = document.getElementByTagName("nav")[0].firstElementchild.children;
-  for(var i = 0; i < boxes.lenght; i++){
-    boxes[i].classList.remove("showBox");
-  }
-  if(box.classList.contains("showBox") === false) {
-    box.classList.add("showBox");
-    for(var i = 0; i < navElements.lenght; i++) {
-      navElements[i].classList.remove("activeNav");
-      if(navElements[i].innerHTML === boxType) {
-        navElements[i].classList.add("activeNav");
+// function openBox(boxType) {
+//   var box = document.getElementById(boxType);
+//   var boxes = document.getElementsByClassName("infoBox");
+//   var navElements = document.getElementByTagName("nav")[0].firstElementchild.children;
+//   for(var i = 0; i < boxes.lenght; i++){
+//     boxes[i].classList.remove("showBox");
+//   }
+//   if(box.classList.contains("showBox") === false) {
+//     box.classList.add("showBox");
+//     for(var i = 0; i < navElements.lenght; i++) {
+//       navElements[i].classList.remove("activeNav");
+//       if(navElements[i].innerHTML === boxType) {
+//         navElements[i].classList.add("activeNav");
 
 
 
