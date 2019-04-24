@@ -13,32 +13,32 @@
   <!-- navigering -->
   <header>
     <ul class="navbar">
-      <li onclick="showBox('utdanning')" class="navbutton"><a href="#1">Utdanning</a></li>
-      <li onclick="showBox('befolkning')" class="navbutton"><a href="#2">Befolkning</a></li>
-      <li onclick="showBox('sysselsatte')" class="navbutton"><a href="#3">Sysselsatte</a></li>
+      <li onclick="showBox('Oversikt')" class="navbutton"><a href="#1">Oversikt</a></li>
+      <li onclick="showBox('Detaljer')" class="navbutton"><a href="#2">Detaljer</a></li>
+      <li onclick="showBox('Sammenligning')" class="navbutton"><a href="#3">Sammenligning</a></li>
     </ul>
   </header>
 
 
   <!-- hovedinnhold -->
   <div class="container center">
-    <div id="Introduksjon">
+    <div id="Introduksjon" class="hidden">
       <p><br>
-        Velkommen til vårt verktøy for å vise data om Norges befolkning.<p>
-        Med dette verktøyet kan du gjøre søk på Norges befolkning, sysselsatte og utdanning.
+        Velkommen til vårt verktøy for å vise data om Norges Detaljer.<p>
+        Med dette verktøyet kan du gjøre søk på Norges Detaljer, Sammenligning og Oversikt.
       <p>Dataene er hentet fra  <a href="https://www.ssb.no/">SSB sin hjemmeside</a></p>
       PS! dataene kan inneholde feil.
       </p>
     </div>
     <br>
 
-    <div class="infoBox hidden" id="utdanning">
+    <div class="infoBox hidden" id="Oversikt">
       <br>
-      <h2>Utdanning</h2>
+      <h2>Oversikt</h2>
       <div id="oversikt">
         <p>
         Oversikt skal vise alle kommunene med navn, kommunenummer, og siste
-        måling av total befolkning (“Begge kjønn”)
+        måling av total Detaljer (“Begge kjønn”)
         </p>
       </div>
 
@@ -48,14 +48,14 @@
             <tr>
               <td>Navn:</td>
               <td>Kommunenummer:</td>
-              <td>Befolkning:</td>
+              <td>Detaljer:</td>
             </tr>
           </thread>
           <tbody>
-            <tr>
-              <td id="navn">Per</td>
-              <td id="Kommunenummer">2222</td>
-              <td id="befolkning">13330 peoples </td>
+            <tr id="navn">
+              <td ></td>
+              <td id="Kommunenummer"></td>
+              <td id="Detaljer"></td>
             </tr>
 
             <tr>
@@ -72,13 +72,13 @@
     </div>
     <br>
 
-    <div class="infoBox hidden"  id="befolkning">
+    <div class="infoBox hidden"  id="Detaljer">
       <br>
-      <h2>Befolkning</h2>
+      <h2>Detaljer</h2>
       <div id="oversikt">
       </div>
 
-      <div id="detaljer" class="detaljer">
+      <div id="detaljer">
         <table>
           <thread>
             <tr>
@@ -108,9 +108,9 @@
     </div>
     <br>
 
-    <div class="infoBox hidden"  id="sysselsatte">
+    <div class="infoBox hidden"  id="Sammenligning">
       <br>
-      <h2>Sysselsatte</h2>
+      <h2>Sammenligning</h2>
       <div id="oversikt">
       </div>
 
@@ -150,8 +150,6 @@
     <br><br>
     Oppgavebesvarelse i emnet INFO134
   </footer>
-
-<!-- roten til alt det onde: -->
 
 
 
