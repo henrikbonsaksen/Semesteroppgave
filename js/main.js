@@ -61,7 +61,7 @@ function loadJSON(url, elmntid) {
 
 
 // Konstruktøren
-let obj = new Population(befolkning_wildboy);
+let befolkning = new Population(befolkning_wildboy);
 
 // Konstruktøren skal defineres med (minst) et parameter: datasettets URL. Dersom dere finner det hensiktsmessig,
 // kan dere også definere den med ytterligere parametre. Objektet som returneres skal i det minste ha følgende metoder:
@@ -103,6 +103,20 @@ function showBox(id) {
     box.classList.replace("hidden", "show");
   }
 };
+
+
+function oversiktData() {
+  var liste = [];
+  var ele = document.getElementsByClassName("detaljer")[0];
+  var listenavn = befolkning.getNames();
+  var listeID = befolkning.getIDs();
+  var totalBefolkning = 
+}
+
+
+
+
+
 
 
 
