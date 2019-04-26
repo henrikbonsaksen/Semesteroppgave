@@ -47,34 +47,6 @@ function oversiktData() {
 }
 
 
-// Lager dynamisk tabellen
-
-// function generateTableHead(table, data) {
-//   let thead = table.createTHead();
-//   let row = thead.insertRow();
-//   for (let key of data) {
-//     let th = document.createElement("th");
-//     let text = document.createTextNode(key);
-//     th.appendChild(text);
-//     row.appendChild(th);
-//   }
-// }
-// function generateTable(table, data) {
-//   for (let element of data) {
-//     let row = table.insertRow();
-//     for (key in element) {
-//       let cell = row.insertCell();
-//       let text = document.createTextNode(element[key]);
-//       cell.appendChild(text);
-//     }
-//   }
-// }
-// let table = document.querySelector("table");
-// let data = Object.keys(mountains[0]);
-// generateTableHead(table, data);
-// generateTable(table, mountains);
-
-
 // Konstruktøren
 let befolkning = new Population(befolkning_wildboy);
 
@@ -100,24 +72,6 @@ function Population(url) {
   }
 };
 
-// vise-og-skjule-knapp
-function showBox(id) {
-  var boxes = document.getElementsByClassName("infoBox");
-  var box = document.getElementById(id);
-  for (var i = 0; i < boxes.length; i++) {
-    boxes[i].classList.replace("show", "hidden");
-  }
-
-  if (box.classList.contains("show")) {
-    box.classList.replace("show", "hidden");
-  }
-
-  else if (box.classList.contains !== "show") {
-    box.classList.replace("hidden", "show");
-  }
-};
-
-
 
 // henrik
 function oversiktData() {
@@ -135,28 +89,7 @@ function oversiktData() {
 }
 
 
-// oversiktData();
-//
-
-
-
-
-// håvard
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-mahmoud
+// mahmoud
 function insertDetaljerOversikt(kommune, kommunenummer, populationIndex){
   var element = document.getElementsByClassName("detaljerTable")[0];
   var totBef = getPopulationList();
@@ -168,17 +101,28 @@ function insertDetaljerOversikt(kommune, kommunenummer, populationIndex){
 }
 
 
-
-
-
-
 //søk
 function search() {
   var x = document.getElementById("mySearch").placeholder;
   document.getElementById("searchResponse").innerHTML = x;
 }
 
+// vise-og-skjule-knapp
+function showBox(id) {
+  var boxes = document.getElementsByClassName("infoBox");
+  var box = document.getElementById(id);
+  for (var i = 0; i < boxes.length; i++) {
+    boxes[i].classList.replace("show", "hidden");
+  }
 
+  if (box.classList.contains("show")) {
+    box.classList.replace("show", "hidden");
+  }
+
+  else if (box.classList.contains !== "show") {
+    box.classList.replace("hidden", "show");
+  }
+};
 
 
 
