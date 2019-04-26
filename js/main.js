@@ -142,7 +142,18 @@ function oversiktData() {
 
 
 // håvard
+/* Funksjon for Sammenligning: Skal kunne skrive inn 2 gyldige kommunenummer. */
 
+//søk
+function search() {
+  var x = document.getElementById("mySearch").placeholder;
+  document.getElementById("demo").innerHTML = x;
+}
+
+function search2() {
+    var x = document.getElementById("mySearch2").placeholder;
+    document.getElementById("demo").innerHTML = x;
+}
 
 
 
