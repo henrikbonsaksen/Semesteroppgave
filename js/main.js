@@ -143,7 +143,15 @@ function oversiktData() {
 
 
 // mahmoud
-
+function insertDetaljerOversikt(kommune, kommunenummer, populationIndex){
+  var element = document.getElementsByClassName("detaljerTable")[0];
+  var totBef = getPopulationList();
+  var totSys = getSysselsettingInfo();
+  document.getElementsByClassName("detaljerTableRowKommuneData")[0].innerHTML = kommune;
+  document.getElementsByClassName("detaljerTableRowKommuneIDData")[0].innerHTML = kommunenummer;
+  document.getElementsByClassName("detaljerTableRowBefolkningData")[0].innerHTML = totBef[populationIndex];
+  document.getElementsByClassName("detaljerTableRowSysselsettingData")[0].innerHTML = totSys[kommune];
+}
 
 
 
