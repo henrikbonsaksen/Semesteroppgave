@@ -67,11 +67,10 @@ let befolkning = new Population(befolkning_wildboy);
 // kan dere også definere den med ytterligere parametre. Objektet som returneres skal i det minste ha følgende metoder:
 function Population(url) {
   this.url = url;
-  getNames();
-
+  getNames()
   // getNames returnerer listen av alle kommunenavnene (som de fremtrer i datasettet).
   function getNames() {
-    var navn = loadJSON(url, "navn");
+    loadJSON(url, "navn");
   }
 
   // getIDs returnerer listen av alle kommunenummerene.
@@ -105,24 +104,25 @@ function showBox(id) {
 };
 
 
+
+// henrik
 function oversiktData() {
   var liste = [];
   var ele = document.getElementsByClassName("detaljer")[0];
   var listenavn = befolkning.getNames();
   var listeID = befolkning.getIDs();
-  var totalBefolkning =
+  var totalBefolkning;
+  for (var indeks = 0; indeks < listenavn.length; indeks++) {
+    var kolonne1 = "<tr><td>" + listenavn[indeks] + "</td>";
+    var kolonne2 = "<td>" + listeID[indeks] + "</td>";
+    var kolonne3 = "<td>" + totalBefolkning[indeks] + "</td></tr>";
+    element.innerHTML += kolonne1 + kolonne2 + kolonne3;
+  }
 }
 
 
-// henrik
-
-
-
-
-
-
-
-
+// oversiktData();
+//
 
 
 
