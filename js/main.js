@@ -88,40 +88,7 @@ function oversiktData() {
   }
 }
 
-
-// oversiktData();
-//
-
-
-
-
-// håvard
-/* Funksjon for Sammenligning: Skal kunne skrive inn 2 gyldige kommunenummer. */
-
-//søk
-function search() {
-  var x = document.getElementById("mySearch").placeholder;
-  document.getElementById("demo").innerHTML = x;
-}
-
-function search2() {
-    var x = document.getElementById("mySearch2").placeholder;
-    document.getElementById("demo").innerHTML = x;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-mahmoud
+//detakjer søk funksjonalitet
 function insertDetaljerOversikt(kommune, kommunenummer, populationIndex){
   var element = document.getElementsByClassName("detaljerTable")[0];
   var totBef = getPopulationList();
@@ -133,11 +100,23 @@ function insertDetaljerOversikt(kommune, kommunenummer, populationIndex){
 }
 
 
-//søk
+//søk detaljer
 function search() {
   var x = document.getElementById("mySearch").placeholder;
   document.getElementById("searchResponse").innerHTML = x;
 }
+
+//Sammenligning søk funksjon
+function search() {
+  var x = document.getElementById("mySearch").placeholder;
+  document.getElementById("demo").innerHTML = x;
+}
+
+function search2() {
+    var x = document.getElementById("mySearch2").placeholder;
+    document.getElementById("demo").innerHTML = x;
+}
+
 
 // vise-og-skjule-knapp
 function showBox(id) {
