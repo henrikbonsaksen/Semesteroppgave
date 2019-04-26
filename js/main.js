@@ -110,8 +110,41 @@ function oversiktData() {
   var ele = document.getElementsByClassName("detaljer")[0];
   var listenavn = befolkning.getNames();
   var listeID = befolkning.getIDs();
-  var totalBefolkning = 
+  var totalBefolkning =
 }
+
+
+// henrik
+
+
+
+
+
+
+
+
+
+
+
+
+// håvard
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// mahmoud
+
+
 
 
 
