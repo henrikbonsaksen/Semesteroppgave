@@ -13,13 +13,16 @@ function loadJSON(url, elmntid) {
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
       var json = (JSON.parse(xhttp.responseText));
-      byer = []
-      for (by in json.elementer) {
+      kommuner = [];
+      kommunenumre = [];
+      kommuneID = [];
+      index = 0;
+      for (kommune in json.elementer) {
         // document.createElement(document.getElementById(elmntid).innerHTML = ("<td>"));
-
-        document.getElementById(elmntid).innerHTML = byer;
-        byer.push(by);
+        document.getElementById(elmntid).innerHTML = "<tr><td>" + kommuner + "</td>";
+        kommuner.push(kommune);
       };
+
       // document.getElementById(elmntid).innerHTML =
       // xhttp.responseText;
     }
@@ -27,6 +30,21 @@ function loadJSON(url, elmntid) {
   xhttp.open("GET", url, true);
   xhttp.send();
 };
+
+
+function oversiktData() {
+  var liste = [];
+  var ele = document.getElementsByClassName("detaljer")[0];
+  var listenavn = befolkning.getNames();
+  var listeID = befolkning.getIDs();
+  var totalBefolkning;
+  for (var indeks = 0; indeks < listenavn.length; indeks++) {
+    var kolonne1 = "<tr><td>" + listenavn[indeks] + "</td>";
+    var kolonne2 = "<td>" + listeID[indeks] + "</td>";
+    var kolonne3 = "<td>" + totalBefolkning[indeks] + "</td></tr>";
+    ele.innerHTML += kolonne1 + kolonne2 + kolonne3;
+  }
+}
 
 
 // Lager dynamisk tabellen
@@ -57,9 +75,6 @@ function loadJSON(url, elmntid) {
 // generateTable(table, mountains);
 
 
-
-
-
 // Konstruktøren
 let befolkning = new Population(befolkning_wildboy);
 
@@ -70,12 +85,11 @@ function Population(url) {
   getNames()
   // getNames returnerer listen av alle kommunenavnene (som de fremtrer i datasettet).
   function getNames() {
-    loadJSON(url, "navn");
+    loadJSON(url, "oversikt");
   }
 
   // getIDs returnerer listen av alle kommunenummerene.
   function getIDs() {
-    let kommuneID = loadJSON(url)[0];
     // console.log(kommuneID);
   }
 
@@ -161,7 +175,7 @@ function oversiktData() {
 //søk
 function search() {
   var x = document.getElementById("mySearch").placeholder;
-  document.getElementById("demo").innerHTML = x;
+  document.getElementById("searchResponse").innerHTML = x;
 }
 
 
