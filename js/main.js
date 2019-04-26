@@ -105,13 +105,13 @@ function showBox(id) {
 };
 
 
-function oversiktData() {
-  var liste = [];
-  var ele = document.getElementsByClassName("detaljer")[0];
-  var listenavn = befolkning.getNames();
-  var listeID = befolkning.getIDs();
-  var totalBefolkning =
-}
+// function oversiktData() {
+//   var liste = [];
+//   var ele = document.getElementsByClassName("detaljer")[0];
+//   var listenavn = befolkning.getNames();
+//   var listeID = befolkning.getIDs();
+//   var totalBefolkning =
+// }
 
 
 // henrik
@@ -143,22 +143,26 @@ function oversiktData() {
 
 
 // mahmoud
-function insertDetaljerOversikt(kommune, kommunenummer, populationIndex){
-  var element = document.getElementsByClassName("detaljerTable")[0];
-  var totBef = getPopulationList();
-  var totSys = getSysselsettingInfo();
-  document.getElementsByClassName("detaljerTableRowKommuneData")[0].innerHTML = kommune;
-  document.getElementsByClassName("detaljerTableRowKommuneIDData")[0].innerHTML = kommunenummer;
-  document.getElementsByClassName("detaljerTableRowBefolkningData")[0].innerHTML = totBef[populationIndex];
-  document.getElementsByClassName("detaljerTableRowSysselsettingData")[0].innerHTML = totSys[kommune];
+// function insertDetaljerOversikt(kommune, kommunenummer, populationIndex){
+//   var element = document.getElementsByClassName("detaljerTable")[0];
+//   var totBef = getPopulationList();
+//   var totSys = getSysselsettingInfo();
+//   document.getElementsByClassName("detaljerTableRowKommuneData")[0].innerHTML = kommune;
+//   document.getElementsByClassName("detaljerTableRowKommuneIDData")[0].innerHTML = kommunenummer;
+//   document.getElementsByClassName("detaljerTableRowBefolkningData")[0].innerHTML = totBef[populationIndex];
+//   document.getElementsByClassName("detaljerTableRowSysselsettingData")[0].innerHTML = totSys[kommune];
+// }
+
+
+
+
+
+
+//søk
+function search() {
+  var x = document.getElementById("mySearch").placeholder;
+  document.getElementById("demo").innerHTML = x;
 }
-
-
-
-
-
-
-
 
 
 
