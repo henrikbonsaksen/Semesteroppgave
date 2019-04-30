@@ -22,33 +22,37 @@ function Population(url) {
         kommunenavn = [];
         var len = json.length;
         for (kommune in json.elementer) {
-          navn.push(kommune + " ");
+          navn.push(kommune);
           // var kolonne1 = "<tr> " + kommune + "</td>";
-          // document.getElementById('navn').innerHTML += kolonne1;
         };
+
       }
     };
     xhttp.open("GET", url, true);
     xhttp.send();
+    console.log(navn);
+    document.getElementById('navn').innerHTML += "<td>"+ navn + "</td>";
+
     return navn;
   };
 
   this.getIDs = function() {
     // hente IDs
+    var kommuneids = [];
     var url = this.url;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
         var json = JSON.parse(xhttp.responseText);
-        kommunenavn = [];
-        for (kommune in json.elementer) {
-          var kolonne2 = "<tr>" + " XXXX " + "</tr>";
-          document.getElementById('kommunenum').innerHTML += kolonne2;
+        for (id in json.elementer[0]) {
+          kommuneids.push(id + " ");
         };
       }
     };
     xhttp.open("GET", url, true);
     xhttp.send();
+    console.log(kommuneids);
+    return kommuneids;
   };
 
   this.getInfo = function() {
@@ -61,15 +65,15 @@ function Population(url) {
 
 function oversiktData() {
   var liste = [];
-  var ele = document.getElementsByClassName("detaljer")[0];
+  var ele = document.getElementsByClassName("detaljer");
   var listenavn = befolkning.getNames();
   var listeID = befolkning.getIDs();
-  var totalBefolkning;
+  // var totalBefolkning;
   for (var indeks = 0; indeks < listenavn.length; indeks++) {
     var kolonne1 = "<tr><td>" + listenavn[indeks] + "</td>";
     var kolonne2 = "<td>" + listeID[indeks] + "</td>";
-    var kolonne3 = "<td>" + totalBefolkning[indeks] + "</td></tr>";
-    ele.innerHTML += kolonne1 + kolonne2 + kolonne3;
+    // var kolonne3 = "<td>" + totalBefolkning[indeks] + "</td></tr>";
+    ele.innerHTML += kolonne1;
   }
 }
 
