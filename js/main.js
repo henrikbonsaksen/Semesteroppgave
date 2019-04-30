@@ -7,44 +7,32 @@ let sysselsatte_wildboy = "http://wildboy.uib.no/~tpe056/folk/100145.json";
 
 
 // funksjon for å hente JSON fra lab//
-function loadJSON(url, elmntid) {
-  var url = url;
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
-      var json = (JSON.parse(xhttp.responseText));
-      kommuner = [];
-      kommunenumre = [];
-      kommuneID = [];
-      index = 0;
-      for (kommune in json.elementer) {
-        // document.createElement(document.getElementById(elmntid).innerHTML = ("<td>"));
-        document.getElementById(elmntid).innerHTML = "<tr><td>" + kommuner + "</td>";
-        kommuner.push(kommune);
-      };
+// getNames returnerer listen av alle kommunenavnene (som de fremtrer i datasettet).
+// function getNames(url, elmntid) {
+//   var url = url;
+//   var xhttp = new XMLHttpRequest();
+//   xhttp.onreadystatechange = function() {
+//     if (xhttp.readyState == 4 && xhttp.status == 200) {
+//       var json = (JSON.parse(xhttp.responseText));
+//       kommuner = [];
+//       kommunenumre = [];
+//       kommuneID = [];
+//
+//       for (kommune in json.elementer) {
+//         // document.createElement(document.getElementById(elmntid).innerHTML = ("<td>"));
+//         document.getElementById(elmntid).innerHTML += "<td>" + kommune + "</td>";
+//         kommuner.push(kommune);
+//       };
+//
+//       // document.getElementById(elmntid).innerHTML =
+//       // xhttp.responseText;
+//     }
+//   };
+//   xhttp.open("GET", url, true);
+//   xhttp.send();
+// };
 
-      // document.getElementById(elmntid).innerHTML =
-      // xhttp.responseText;
-    }
-  };
-  xhttp.open("GET", url, true);
-  xhttp.send();
-};
 
-
-function oversiktData() {
-  var liste = [];
-  var ele = document.getElementsByClassName("detaljer")[0];
-  var listenavn = befolkning.getNames();
-  var listeID = befolkning.getIDs();
-  var totalBefolkning;
-  for (var indeks = 0; indeks < listenavn.length; indeks++) {
-    var kolonne1 = "<tr><td>" + listenavn[indeks] + "</td>";
-    var kolonne2 = "<td>" + listeID[indeks] + "</td>";
-    var kolonne3 = "<td>" + totalBefolkning[indeks] + "</td></tr>";
-    ele.innerHTML += kolonne1 + kolonne2 + kolonne3;
-  }
-}
 
 
 // Konstruktøren
@@ -54,39 +42,67 @@ let befolkning = new Population(befolkning_wildboy);
 // kan dere også definere den med ytterligere parametre. Objektet som returneres skal i det minste ha følgende metoder:
 function Population(url) {
   this.url = url;
-  getNames()
-  // getNames returnerer listen av alle kommunenavnene (som de fremtrer i datasettet).
-  function getNames() {
-    loadJSON(url, "oversikt");
-  }
 
-  // getIDs returnerer listen av alle kommunenummerene.
-  function getIDs() {
-    // console.log(kommuneID);
-  }
+  this.getNames = function() {
+    var url = this.url;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (xhttp.readyState == 4 && xhttp.status == 200) {
+        var json = JSON.parse(xhttp.responseText);
+        kommunenavn = [];
+        for (kommune in json.elementer) {
+          kommunenavn.push(kommune);
+        };
+      }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+  };
 
-  function getInfo() {
+
+  this.getIDs = function(url) {
+    // hente IDs
+    var url = this.url;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (xhttp.readyState == 4 && xhttp.status == 200) {
+        var json = (JSON.parse(xhttp.responseText));
+        id = [];
+        for (kommunenummer in json.elementer) {
+          id.push += kommunenummer;
+        };
+        return id;
+      }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+
+  };
+
+  this.getInfo = function() {
     console.log("Ferdig");
     // let page = Object.keys(data.query.pages) [0];
     // console.log(page);
   }
+
+  this.oversiktData = function() {
+    var liste = [];
+    var ele = document.getElementsByClassName("detaljer")[0];
+    var listenavn = befolkning.getNames;
+    var listeID = befolkning.getIDs;
+    var totalBefolkning;
+    for (var indeks = 0; indeks < listenavn.length; indeks++) {
+      var kolonne1 = "<tr><td>" + listenavn[indeks] + "</td>";
+      var kolonne2 = "<td>" + listeID[indeks] + "</td>";
+      var kolonne3 = "<td>" + totalBefolkning[indeks] + "</td></tr>";
+      ele.innerHTML += kolonne1 + kolonne2 + kolonne3;
+    }
+  }
+
 };
 
 
-// henrik
-function oversiktData() {
-  var liste = [];
-  var ele = document.getElementsByClassName("detaljer")[0];
-  var listenavn = befolkning.getNames();
-  var listeID = befolkning.getIDs();
-  var totalBefolkning;
-  for (var indeks = 0; indeks < listenavn.length; indeks++) {
-    var kolonne1 = "<tr><td>" + listenavn[indeks] + "</td>";
-    var kolonne2 = "<td>" + listeID[indeks] + "</td>";
-    var kolonne3 = "<td>" + totalBefolkning[indeks] + "</td></tr>";
-    element.innerHTML += kolonne1 + kolonne2 + kolonne3;
-  }
-}
+
 
 //detakjer søk funksjonalitet
 function insertDetaljerOversikt(kommune, kommunenummer, populationIndex){

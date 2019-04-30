@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css"/>
-    <script type="text/javascript" src="js/main.js"></script>
     <title>Semesteroppgave</title>
   </head>
 
@@ -14,7 +13,7 @@
   <header>
     <ul class="navbar">
       <li onclick="showBox('Introduksjon')" class="navbutton"><a href="#1">Introduksjon</a></li>
-      <li onclick="showBox('Oversikt')" class="navbutton"><a href="#2">Oversikt</a></li>
+      <li onclick="showBox('Oversikt'), befolkning.oversiktData()" class="navbutton"><a href="#2">Oversikt</a></li>
       <li onclick="showBox('Detaljer')" class="navbutton"><a href="#3">Detaljer</a></li>
       <li onclick="showBox('Sammenligning')" class="navbutton"><a href="#4">Sammenligning</a></li>
     </ul>
@@ -52,10 +51,7 @@
             </tr>
           </thread>
           <tbody>
-            <tr id="navn">
-              <td ></td>
-              <td id="Kommunenummer"></td>
-              <td id="Detaljer"></td>
+            <tr class="detaljer" id="navn">
             </tr>
             <tr>
               <td>Value 1</td>
@@ -134,6 +130,6 @@
   </footer>
 
 
-
+  <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
