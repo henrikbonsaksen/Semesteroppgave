@@ -13,7 +13,7 @@
   <header>
     <ul class="navbar">
       <li onclick="showBox('Introduksjon')" class="navbutton"><a href="#1">Introduksjon</a></li>
-      <li onclick="showBox('Oversikt'), befolkning.oversiktData()" class="navbutton"><a href="#2">Oversikt</a></li>
+      <li onclick="showBox('Oversikt'), befolkning.getNames(), befolkning.getIDs()" class="navbutton"><a href="#2">Oversikt</a></li>
       <li onclick="showBox('Detaljer')" class="navbutton"><a href="#3">Detaljer</a></li>
       <li onclick="showBox('Sammenligning')" class="navbutton"><a href="#4">Sammenligning</a></li>
     </ul>
@@ -41,24 +41,25 @@
         måling av total befolkning (“Begge kjønn”)
         </p>
       </div>
+
+
+
+
       <div id="oversikt">
         <table>
-          <thread>
-            <tr>
-              <td>Navn:</td>
-              <td>Kommunenummer:</td>
-              <td>Detaljer:</td>
-            </tr>
-          </thread>
-          <tbody>
-            <tr class="detaljer" id="navn">
-            </tr>
-            <tr>
-              <td>Value 1</td>
-              <td>Value 2</td>
-              <td>Value 3</td>
-            </tr>
-          </tbody>
+          <tr>
+            <th>Navn</th>
+            <th>Kommunenummer</th>
+            <th>Info</th>
+          </tr>
+          <tr id="navn">
+            <td></td>
+          </tr>
+
+
+          <tr id="kommunenum">
+            <td></td>
+          </tr>
         </table>
       </div>
     </div>
@@ -68,6 +69,14 @@
     <div class="infoBox hidden"  id="Detaljer">
       <br>
       <h2>Detaljer</h2>
+      <p>Skal vise:</p>
+      <p>* Kommunens navn, kommunenummer, siste målte befolkning, siste målte statistikk for sysselseting
+      og høyere utdanning (antall og prosent).</p>
+      <p>* Etter disse punktvise detaljene skal dere også vise historisk utvikling i form av tabeller/lister for
+      befolkning, sysselsetting og utdanning. </p>
+      <p>I disse tabellene/listene kan dere velge selv om dere viser
+      all data dere har, eller bare data for de årene som forekommer i alle datasettene. Altså, dere kan
+      begrense årene dere viser data for til de årene som forekommer i alle tre datasett.<p>
       <div id="detaljerTable">
 
         <input type="search" id="mySearch" placeholder="Her kan  du gjøre søk">

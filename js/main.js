@@ -36,7 +36,7 @@ let sysselsatte_wildboy = "http://wildboy.uib.no/~tpe056/folk/100145.json";
 
 
 // Konstruktøren
-let befolkning = new Population(befolkning_wildboy);
+var befolkning = new Population(befolkning_wildboy);
 
 // Konstruktøren skal defineres med (minst) et parameter: datasettets URL. Dersom dere finner det hensiktsmessig,
 // kan dere også definere den med ytterligere parametre. Objektet som returneres skal i det minste ha følgende metoder:
@@ -51,7 +51,8 @@ function Population(url) {
         var json = JSON.parse(xhttp.responseText);
         kommunenavn = [];
         for (kommune in json.elementer) {
-          kommunenavn.push(kommune);
+          var kolonne1 = "<td>" + kommune + "</td>";
+          document.getElementById('navn').innerHTML += kolonne1;
         };
       }
     };
@@ -59,24 +60,22 @@ function Population(url) {
     xhttp.send();
   };
 
-
-  this.getIDs = function(url) {
+  this.getIDs = function() {
     // hente IDs
     var url = this.url;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
-        var json = (JSON.parse(xhttp.responseText));
-        id = [];
-        for (kommunenummer in json.elementer) {
-          id.push += kommunenummer;
+        var json = JSON.parse(xhttp.responseText);
+        kommunenavn = [];
+        for (kommune in json.elementer) {
+          var kolonne2 = "<tr>" + " XXXX " + "</tr>";
+          document.getElementById('kommunenum').innerHTML += kolonne2;
         };
-        return id;
       }
     };
     xhttp.open("GET", url, true);
     xhttp.send();
-
   };
 
   this.getInfo = function() {
@@ -85,11 +84,13 @@ function Population(url) {
     // console.log(page);
   }
 
-  this.oversiktData = function() {
+};
+
+  function oversiktData() {
     var liste = [];
     var ele = document.getElementsByClassName("detaljer")[0];
-    var listenavn = befolkning.getNames;
-    var listeID = befolkning.getIDs;
+    var listenavn = befolkning.getNames();
+    var listeID = befolkning.getIDs();
     var totalBefolkning;
     for (var indeks = 0; indeks < listenavn.length; indeks++) {
       var kolonne1 = "<tr><td>" + listenavn[indeks] + "</td>";
@@ -98,9 +99,6 @@ function Population(url) {
       ele.innerHTML += kolonne1 + kolonne2 + kolonne3;
     }
   }
-
-};
-
 
 
 
