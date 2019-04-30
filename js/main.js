@@ -44,15 +44,18 @@ function Population(url) {
   this.url = url;
 
   this.getNames = function() {
-    var url = this.url;
     var xhttp = new XMLHttpRequest();
+
     xhttp.onreadystatechange = function() {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
         var json = JSON.parse(xhttp.responseText);
         kommunenavn = [];
+        var len = json.length;
+        var navn = [];
         for (kommune in json.elementer) {
-          var kolonne1 = "<td>" + kommune + "</td>";
-          document.getElementById('navn').innerHTML += kolonne1;
+          navn.push(kommune + " ");
+          // var kolonne1 = "<tr> " + kommune + "</td>";
+          // document.getElementById('navn').innerHTML += kolonne1;
         };
       }
     };
@@ -86,19 +89,19 @@ function Population(url) {
 
 };
 
-  function oversiktData() {
-    var liste = [];
-    var ele = document.getElementsByClassName("detaljer")[0];
-    var listenavn = befolkning.getNames();
-    var listeID = befolkning.getIDs();
-    var totalBefolkning;
-    for (var indeks = 0; indeks < listenavn.length; indeks++) {
-      var kolonne1 = "<tr><td>" + listenavn[indeks] + "</td>";
-      var kolonne2 = "<td>" + listeID[indeks] + "</td>";
-      var kolonne3 = "<td>" + totalBefolkning[indeks] + "</td></tr>";
-      ele.innerHTML += kolonne1 + kolonne2 + kolonne3;
-    }
+function oversiktData() {
+  var liste = [];
+  var ele = document.getElementsByClassName("detaljer")[0];
+  var listenavn = befolkning.getNames();
+  var listeID = befolkning.getIDs();
+  var totalBefolkning;
+  for (var indeks = 0; indeks < listenavn.length; indeks++) {
+    var kolonne1 = "<tr><td>" + listenavn[indeks] + "</td>";
+    var kolonne2 = "<td>" + listeID[indeks] + "</td>";
+    var kolonne3 = "<td>" + totalBefolkning[indeks] + "</td></tr>";
+    ele.innerHTML += kolonne1 + kolonne2 + kolonne3;
   }
+}
 
 
 
