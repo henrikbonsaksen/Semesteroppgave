@@ -45,13 +45,12 @@ function Population(url) {
 
   this.getNames = function() {
     var xhttp = new XMLHttpRequest();
-
+    var navn = [];
     xhttp.onreadystatechange = function() {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
         var json = JSON.parse(xhttp.responseText);
         kommunenavn = [];
         var len = json.length;
-        var navn = [];
         for (kommune in json.elementer) {
           navn.push(kommune + " ");
           // var kolonne1 = "<tr> " + kommune + "</td>";
@@ -61,6 +60,7 @@ function Population(url) {
     };
     xhttp.open("GET", url, true);
     xhttp.send();
+    return navn;
   };
 
   this.getIDs = function() {
@@ -106,15 +106,15 @@ function oversiktData() {
 
 
 //detakjer søk funksjonalitet
-function insertDetaljerOversikt(kommune, kommunenummer, populationIndex){
-  var element = document.getElementsByClassName("detaljerTable")[0];
-  var totBef = getPopulationList();
-  var totSys = getSysselsettingInfo();
-  document.getElementsByClassName("detaljerTableRowKommuneData")[0].innerHTML = kommune;
-  document.getElementsByClassName("detaljerTableRowKommuneIDData")[0].innerHTML = kommunenummer;
-  document.getElementsByClassName("detaljerTableRowBefolkningData")[0].innerHTML = totBef[populationIndex];
-  document.getElementsByClassName("detaljerTableRowSysselsettingData")[0].innerHTML = totSys[kommune];
-}
+// function insertDetaljerOversikt(kommune, kommunenummer, populationIndex){
+//   var element = document.getElementsByClassName("detaljerTable")[0];
+//   var totBef = getPopulationList();
+//   var totSys = getSysselsettingInfo();
+//   document.getElementsByClassName("detaljerTableRowKommuneData")[0].innerHTML = kommune;
+//   document.getElementsByClassName("detaljerTableRowKommuneIDData")[0].innerHTML = kommunenummer;
+//   document.getElementsByClassName("detaljerTableRowBefolkningData")[0].innerHTML = totBef[populationIndex];
+//   document.getElementsByClassName("detaljerTableRowSysselsettingData")[0].innerHTML = totSys[kommune];
+// }
 
 
 //søk detaljer
