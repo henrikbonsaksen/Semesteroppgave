@@ -5,36 +5,6 @@ let befolkning_wildboy = "http://wildboy.uib.no/~tpe056/folk/104857.json";
 let sysselsatte_wildboy = "http://wildboy.uib.no/~tpe056/folk/100145.json";
 
 
-
-// funksjon for å hente JSON fra lab//
-// getNames returnerer listen av alle kommunenavnene (som de fremtrer i datasettet).
-// function getNames(url, elmntid) {
-//   var url = url;
-//   var xhttp = new XMLHttpRequest();
-//   xhttp.onreadystatechange = function() {
-//     if (xhttp.readyState == 4 && xhttp.status == 200) {
-//       var json = (JSON.parse(xhttp.responseText));
-//       kommuner = [];
-//       kommunenumre = [];
-//       kommuneID = [];
-//
-//       for (kommune in json.elementer) {
-//         // document.createElement(document.getElementById(elmntid).innerHTML = ("<td>"));
-//         document.getElementById(elmntid).innerHTML += "<td>" + kommune + "</td>";
-//         kommuner.push(kommune);
-//       };
-//
-//       // document.getElementById(elmntid).innerHTML =
-//       // xhttp.responseText;
-//     }
-//   };
-//   xhttp.open("GET", url, true);
-//   xhttp.send();
-// };
-
-
-
-
 // Konstruktøren
 var befolkning = new Population(befolkning_wildboy);
 
