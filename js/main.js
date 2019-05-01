@@ -4,93 +4,80 @@ let utdanning_wildboy = "http://wildboy.uib.no/~tpe056/folk/85432.json";
 let befolkning_wildboy = "http://wildboy.uib.no/~tpe056/folk/104857.json";
 let sysselsatte_wildboy = "http://wildboy.uib.no/~tpe056/folk/100145.json";
 
+var populateDetaljerView = function() {
+  var detaljerTable = document.getElementsByClassName("detaljer")[0];
+  var kommunenavn = befolkning.getNames();
+  var kommunenummer = befolkning.getIDs();
 
-// Konstruktøren
-var befolkning = new Population(befolkning_wildboy);
+  for (var i = 0; i < kommunenavn.length; i++) {
+    var row = detaljerTable.insertRow(0);
+    var nameCell = row.insertCell(0);
+    var idCell = row.insertCell(1);
+    var infoCell = row.insertCell(2);
 
-// Konstruktøren skal defineres med (minst) et parameter: datasettets URL. Dersom dere finner det hensiktsmessig,
-// kan dere også definere den med ytterligere parametre. Objektet som returneres skal i det minste ha følgende metoder:
-function Population(url) {
-  this.url = url;
-
-  this.getNames = function() {
-    var xhttp = new XMLHttpRequest();
-    var navn = [];
-    xhttp.onreadystatechange = function() {
-      if (xhttp.readyState == 4 && xhttp.status == 200) {
-        var json = JSON.parse(xhttp.responseText);
-        kommunenavn = [];
-        var len = json.length;
-        for (kommune in json.elementer) {
-          navn.push(kommune);
-          // var kolonne1 = "<tr> " + kommune + "</td>";
-        };
-
-      }
-    };
-    xhttp.open("GET", url, true);
-    xhttp.send();
-    console.log(navn);
-    document.getElementById('navn').innerHTML += "<td>"+ navn + "</td>";
-
-    return navn;
-  };
-
-  this.getIDs = function() {
-    // hente IDs
-    var kommuneids = [];
-    var url = this.url;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (xhttp.readyState == 4 && xhttp.status == 200) {
-        var json = JSON.parse(xhttp.responseText);
-        for (id in json.elementer[0]) {
-          kommuneids.push(id + " ");
-        };
-      }
-    };
-    xhttp.open("GET", url, true);
-    xhttp.send();
-    console.log(kommuneids);
-    return kommuneids;
-  };
-
-  this.getInfo = function() {
-    console.log("Ferdig");
-    // let page = Object.keys(data.query.pages) [0];
-    // console.log(page);
-  }
-
-};
-
-function oversiktData() {
-  var liste = [];
-  var ele = document.getElementsByClassName("detaljer");
-  var listenavn = befolkning.getNames();
-  var listeID = befolkning.getIDs();
-  // var totalBefolkning;
-  for (var indeks = 0; indeks < listenavn.length; indeks++) {
-    var kolonne1 = "<tr><td>" + listenavn[indeks] + "</td>";
-    var kolonne2 = "<td>" + listeID[indeks] + "</td>";
-    // var kolonne3 = "<td>" + totalBefolkning[indeks] + "</td></tr>";
-    ele.innerHTML += kolonne1;
+    nameCell.innerHTML = kommunenavn[i];
+    idCell.innerHTML = kommunenummer[i];
+    infoCell.innerHTML = "Info goes here";
   }
 }
 
+function performGetRequest(url, callback) {
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function() {
+    if (request.readyState == 4 && request.status == 200) {
+      callback(request.response);
+    }
+  }
+  request.open("GET", url, true);
+  request.send();
+}
 
+function Befolkning(url) {
+  this.url = url;
+  this.kommuner = [];
+  this.onload = null;
 
-//detakjer søk funksjonalitet
-// function insertDetaljerOversikt(kommune, kommunenummer, populationIndex){
-//   var element = document.getElementsByClassName("detaljerTable")[0];
-//   var totBef = getPopulationList();
-//   var totSys = getSysselsettingInfo();
-//   document.getElementsByClassName("detaljerTableRowKommuneData")[0].innerHTML = kommune;
-//   document.getElementsByClassName("detaljerTableRowKommuneIDData")[0].innerHTML = kommunenummer;
-//   document.getElementsByClassName("detaljerTableRowBefolkningData")[0].innerHTML = totBef[populationIndex];
-//   document.getElementsByClassName("detaljerTableRowSysselsettingData")[0].innerHTML = totSys[kommune];
-// }
+  this.kommunenavn = [];
+  this.kommunenummer = [];
+  this.kommuneinfo = {};
 
+  this.getNames = function() {
+    return this.kommunenavn;
+  }
 
+  this.getIDs = function() {
+    return this.kommunenummer;
+  }
+
+  this.getInfo = function(kommunenummer) {
+    return this.kommuneinfo[kommunenummer];
+  }
+
+  this.load = function() {
+    var self = this;
+    performGetRequest(this.url, function(response) {
+      var data = JSON.parse(response);
+      for (var navn in data.elementer) {
+        var kommuneData = data.elementer[navn];
+
+        self.kommunenavn.push(navn);
+        self.kommunenummer.push(kommuneData.kommunenummer);
+        self.kommuneinfo[kommuneData.kommunenummer] = { population: kommuneData };
+      };
+
+      if (self.onload) {
+        self.onload();
+      }
+    });
+  }
+}
+
+var befolkning = new Befolkning(befolkning_wildboy);
+befolkning.onload = function() {
+  populateDetaljerView();
+}
+
+befolkning.load();
 //søk detaljer
 function search() {
   var x = document.getElementById("mySearch").placeholder;
