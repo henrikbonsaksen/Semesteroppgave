@@ -50,11 +50,11 @@
           <tr>
             <th>Navn</th>
             <th>Kommunenummer</th>
-            <th>Info</th>
+            <th>Befolkning 2018</th>
           </tr>
         </table>
 
-        <table class="detaljer">
+        <table class="oversikt">
 
         </table>
       </div>
@@ -73,58 +73,36 @@
       <p>I disse tabellene/listene kan dere velge selv om dere viser
       all data dere har, eller bare data for de årene som forekommer i alle datasettene. Altså, dere kan
       begrense årene dere viser data for til de årene som forekommer i alle tre datasett.<p>
-      <div id="detaljerTable">
 
-        <input type="search" id="mySearch" placeholder="Her kan  du gjøre søk">
+      <input type="search" id="detaljer" value="">
+      <button onclick="detaljer()">Søk</button>
+      <br>
+      <table id="detaljerTable">
+      </table>
 
-        <button onclick="search()">Søk</button>
 
-      </div>
-      <div id="searchResponse">
     </div>
-    <br>
-
 
     <div class="infoBox hidden"  id="Sammenligning">
       <br>
       <h2>Sammenligning</h2>
-      <div id="sammenligningTable">
 
-        <p> Gjør søk på kommunenummer under: </p>
+      <div id="sammenligning">
+        <p> Gjør søk på kommuner under: </p>
 
-        <input type="search" id="mySearch" placeholder="Første kommune">
-        <button onclick="search()"> Søk </button>
+        <input type="search" id="s1" placeholder="Første kommune" value="">
+        <input type="search" id="s2" placeholder="Andre kommune" value="">
+        <button onclick="sammenlign()"> Sammenlign </button>
+        <br>
 
-        <input type="search" id="mySearch2" placeholder="Andre kommune">
-        <button onclick="search2()"> Søk </button>
-
-        <table>
-          <thread>
-            <tr>
-              <td>Row 1</td>
-              <td>Row 2</td>
-              <td>Row 3</td>
-            </tr>
-          </thread>
-          <tbody>
-            <tr>
-              <td>Value 1</td>
-              <td>Value 2</td>
-              <td>Value 3</td>
-            </tr>
-
-            <tr>
-              <td>Value 1</td>
-              <td>Value 2</td>
-              <td>Value 3</td>
-            </tr>
-          </tbody>
+        <table id="sammenligningTable1">
+        </table>
+        <table id="sammenligningTable2">
         </table>
       </div>
 
     </div>
     <br>
-  </div>
 </div>
 
 

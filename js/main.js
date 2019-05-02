@@ -5,9 +5,10 @@ let befolkning_wildboy = "http://wildboy.uib.no/~tpe056/folk/104857.json";
 let sysselsatte_wildboy = "http://wildboy.uib.no/~tpe056/folk/100145.json";
 
 var populateDetaljerView = function() {
-  var detaljerTable = document.getElementsByClassName("detaljer")[0];
+  var detaljerTable = document.getElementsByClassName("oversikt")[0];
   var kommunenavn = befolkning.getNames();
   var kommunenummer = befolkning.getIDs();
+  var info = befolkning.kommuneinfo;
 
   for (var i = 0; i < kommunenavn.length; i++) {
     var row = detaljerTable.insertRow(0);
@@ -17,7 +18,8 @@ var populateDetaljerView = function() {
 
     nameCell.innerHTML = kommunenavn[i];
     idCell.innerHTML = kommunenummer[i];
-    infoCell.innerHTML = "lol";
+    infoCell.innerHTML = info[kommunenummer[i]].population.Menn[2018] + info[kommunenummer[i]].population.Kvinner[2018];
+    // console.log(info[kommunenummer[i]].population.Menn[2018]);
   }
 }
 
@@ -53,18 +55,6 @@ function Befolkning(url) {
     return this.kommuneinfo[kommunenummer];
   }
 
-  this.ordbok = function() {
-    for (var menn in data.elementer[navn]) {
-      if (parseInt(data[i][1].kommunenummer ) == kommunenummer) {
-        mennData = data[i][1].Menn
-        kvinnerData = data[i][1].Kvinner
-        console.log(mennData)
-        console.log(kvinnerData)
-
-      }
-    }
-  }
-
   this.load = function() {
     var self = this;
     performGetRequest(this.url, function(response) {
@@ -76,6 +66,7 @@ function Befolkning(url) {
         self.kommunenummer.push(kommuneData.kommunenummer);
         self.kommuneinfo[kommuneData.kommunenummer] = { population: kommuneData };
       };
+      console.log(self.kommuneinfo);
 
       if (self.onload) {
         self.onload();
@@ -85,7 +76,9 @@ function Befolkning(url) {
 }
 
 
+function ordbok() {
 
+}
 
 
 
@@ -95,22 +88,55 @@ befolkning.onload = function() {
 }
 
 befolkning.load();
+
 //søk detaljer
-function search() {
-  var x = document.getElementById("mySearch").placeholder;
-  document.getElementById("searchResponse").innerHTML = x;
-}
+function detaljer() {
+  var input = document.getElementById("detaljer").value;
+  data = befolkning.getNames();
+  kommunenum = befolkning.getIDs();
+  // console.log(input);
+  for (var i=0; i < data.length; i++) {
+    if (data[i] === input || kommunenum[i] === input) {
+      console.log(data[i]);
+      console.log(kommunenum[i]);
+    }
+    // document.getElementById("detaljerTable").innerHTML = input;
+
+    }
+  }
+
+  // for (var i=0; i < info.length; i++) {
+  //   if (info[i][1].kommunenummer === info.kommunenummer) {
+  //     mennData = info[i][1].Menn
+  //     kvinnerData = info[i][1].Kvinner
+  //     console.log(mennData)
+  //     console.log(kvinnerData)
+
 
 //Sammenligning søk funksjon
-function search() {
-  var x = document.getElementById("mySearch").placeholder;
-  document.getElementById("demo").innerHTML = x;
-}
+function sammenlign() {
+  var input1 = document.getElementById("s1").value;
+  var input2 = document.getElementById('s2').value;
+  // console.log(value1, value2);
+  var data = befolkning.getNames();
+  var kommunenum = befolkning.getIDs();
+  var input1data;
+  var input2data;
 
-function search2() {
-    var x = document.getElementById("mySearch2").placeholder;
-    document.getElementById("demo").innerHTML = x;
-}
+  for (var i=0; i < data.length; i++) {
+    if (data[i] === input1 || kommunenum[i] === input1) {
+      input1data = data[i] + " " + kommunenum[i];
+    }
+
+  };
+
+  for (var i=0; i < data.length; i++) {
+    if (data[i] === input2 || kommunenum[i] === input2) {
+      input2data = data[i] + " " + kommunenum[i];
+    }
+    }
+    document.getElementById("sammenligningTable1").innerHTML = "<br> Value 1: " + input1data + " og <br> Value 2: " + input2data;
+  };
 
 
 // vise-og-skjule-knapp
