@@ -17,7 +17,7 @@ var populateDetaljerView = function() {
 
     nameCell.innerHTML = kommunenavn[i];
     idCell.innerHTML = kommunenummer[i];
-    infoCell.innerHTML = "Info goes here";
+    infoCell.innerHTML = "lol";
   }
 }
 
@@ -39,7 +39,7 @@ function Befolkning(url) {
 
   this.kommunenavn = [];
   this.kommunenummer = [];
-  this.kommuneinfo = {};
+  this.kommuneinfo = {} ;
 
   this.getNames = function() {
     return this.kommunenavn;
@@ -51,6 +51,18 @@ function Befolkning(url) {
 
   this.getInfo = function(kommunenummer) {
     return this.kommuneinfo[kommunenummer];
+  }
+
+  this.ordbok = function() {
+    for (var menn in data.elementer[navn]) {
+      if (parseInt(data[i][1].kommunenummer ) == kommunenummer) {
+        mennData = data[i][1].Menn
+        kvinnerData = data[i][1].Kvinner
+        console.log(mennData)
+        console.log(kvinnerData)
+
+      }
+    }
   }
 
   this.load = function() {
@@ -71,6 +83,11 @@ function Befolkning(url) {
     });
   }
 }
+
+
+
+
+
 
 var befolkning = new Befolkning(befolkning_wildboy);
 befolkning.onload = function() {
