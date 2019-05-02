@@ -13,6 +13,17 @@ body {
   box-shadow: 0px 5px 10px gray;
 }
 
+.th {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  table-layout: inherit;
+}
+
+.align {
+  table-layout: fixed;
+}
+
 #detaljer {
   text-align: center;
   width: auto;
