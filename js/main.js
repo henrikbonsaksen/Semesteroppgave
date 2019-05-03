@@ -31,6 +31,8 @@ var populateDetaljerView = function() {
 //søkefunksjon detaljer
 var detaljer = function() {
   var input = document.getElementById("detaljer").value;
+  var inputid = document.getElementById("detaljer");
+
   var detaljer = document.getElementsByClassName('detaljerTable')[0];
 
   var kommunenavn = befolkning.getNames();
@@ -38,15 +40,17 @@ var detaljer = function() {
   var info = befolkning.kommuneinfo;
 
   var sysselsatte = syssel.kommuneinfo;
-  var utdanninger = utdanning.kommuneinfo;
-
+  var utd = utdanning.kommuneinfo;
+  console.log(utd);
   for (var i = 0; i < kommunenavn.length; i++) {
     if (kommunenavn[i] === input || kommunenummer[i] === input) {
+
       var row1 = detaljer.insertRow(0);
       var nameCell = row1.insertCell(0);
       var idCell = row1.insertCell(1);
       var infoCell = row1.insertCell(2);
       var infoCell2 = row1.insertCell(3);
+      var infoCell3 = row1.insertCell(4);
 
       nameCell.innerHTML ="Kommunenavn: " + kommunenavn[i];
       idCell.innerHTML = "Kommunenummer: " + kommunenummer[i];
@@ -54,9 +58,17 @@ var detaljer = function() {
       + info[kommunenummer[i]].population.Kvinner[2018]);
 
       infoCell2.innerHTML = "Sysselsatte: " + sysselsatte[kommunenummer[i]].population.Menn[2018]
-      + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[2018] + "% av kvinner i arbeid.";
+      + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[2018]
+      + "% av kvinner i arbeid.";
+
+      infoCell3.innerHTML = "Utdanning: " + utd[kommunenummer[i]].population["01"].Menn[2017]
+      + "% av menn er utdannet og " + utd[kommunenummer[i]].population["01"].Kvinner[2017] +
+      "% av kvinner er utdannet.";
+
     }
   };
+
+
 }
 
 function performGetRequest(url, callback) {
@@ -185,7 +197,6 @@ function showBox(id) {
     box.classList.replace("hidden", "show");
   }
 };
-
 
 
 
