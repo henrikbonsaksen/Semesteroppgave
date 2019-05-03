@@ -44,39 +44,64 @@ var detaljer = function() {
   console.log(utd);
   for (var i = 0; i < kommunenavn.length; i++) {
     if (kommunenavn[i] === input || kommunenummer[i] === input) {
-
       var row1 = detaljer.insertRow(0);
       var nameCell = row1.insertCell(0);
       var idCell = row1.insertCell(1);
 
       var infoCell = row1.insertCell(2);
       var infoCell2 = row1.insertCell(3);
-      var infoCell3 = row1.insertCell(4);
-      var infoCell4 = row1.insertCell(5);
-      var infoCell5 = row1.insertCell(6);
 
+      var row2 = detaljer.insertRow(1);
+      var row3 = detaljer.insertRow(1);
+      var row4 = detaljer.insertRow(1);
+      var row5 = detaljer.insertRow(1);
+
+      var c1r2 = row2.insertCell(0);
+      var c2r2 = row2.insertCell(1);
+
+      var c1r3 = row3.insertCell(0);
+      var c2r3 = row3.insertCell(1);
+
+      var c1r4 = row4.insertCell(0);
+      var c2r4 = row4.insertCell(1);
+
+      var c1r5 = row5.insertCell(0);
+      var c2r5 = row5.insertCell(1);
 
       nameCell.innerHTML ="Kommunenavn: " + kommunenavn[i];
       idCell.innerHTML = "Kommunenummer: " + kommunenummer[i];
       infoCell.innerHTML = "Befolkning: " + (info[kommunenummer[i]].population.Menn[2018]
       + info[kommunenummer[i]].population.Kvinner[2018]);
 
-      infoCell2.innerHTML = "Sysselsatte: " + sysselsatte[kommunenummer[i]].population.Menn[2018]
+      c1r2.innerHTML = "Sysselsatte: " + sysselsatte[kommunenummer[i]].population.Menn[2018]
       + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[2018]
       + "% av kvinner i arbeid.";
 
-      infoCell3.innerHTML = "Utdanning grunnskolenivå: " + utd[kommunenummer[i]].population["01"].Menn[2017]
+      c2r2.innerHTML = "Utdanning grunnskolenivå: " + utd[kommunenummer[i]].population["01"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["01"].Kvinner[2017] +
       "% av kvinner er utdannet.";
 
-      infoCell4.innerHTML = "Utdanning videregående: " + utd[kommunenummer[i]].population["02a"].Menn[2017]
+      c1r3.innerHTML = "Utdanning VGS: " + utd[kommunenummer[i]].population["02a"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["02a"].Kvinner[2017] +
       "% av kvinner er utdannet.";
 
-      infoCell5.innerHTML = "Utdanning universitet/høyskole kort: " + utd[kommunenummer[i]].population["03a"].Menn[2017]
+      c2r3.innerHTML = "Utdanning UNI / høyskole kort: " + utd[kommunenummer[i]].population["03a"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
       "% av kvinner.";
 
+
+
+      c1r4.innerHTML = "Utdanning UNI / høyskole lang: " + utd[kommunenummer[i]].population["03a"].Menn[2017]
+      + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
+      "% av kvinner.";
+
+      c2r4.innerHTML = "Utdanning fagskole: " + utd[kommunenummer[i]].population["03a"].Menn[2017]
+      + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
+      "% av kvinner.";
+
+      c1r5.innerHTML = "Utdanning fagskole: " + utd[kommunenummer[i]].population["03a"].Menn[2017]
+      + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
+      "% av kvinner.";
     }
   };
 
