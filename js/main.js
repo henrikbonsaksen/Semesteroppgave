@@ -32,6 +32,7 @@ var populateDetaljerView = function() {
 var detaljer = function() {
   var input = document.getElementById("detaljer").value;
   var detaljer = document.getElementsByClassName('detaljerTable'[0]);
+
   var kommunenavn = befolkning.getNames();
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
