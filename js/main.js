@@ -48,9 +48,13 @@ var detaljer = function() {
       var row1 = detaljer.insertRow(0);
       var nameCell = row1.insertCell(0);
       var idCell = row1.insertCell(1);
+
       var infoCell = row1.insertCell(2);
       var infoCell2 = row1.insertCell(3);
       var infoCell3 = row1.insertCell(4);
+      var infoCell4 = row1.insertCell(5);
+      var infoCell5 = row1.insertCell(6);
+
 
       nameCell.innerHTML ="Kommunenavn: " + kommunenavn[i];
       idCell.innerHTML = "Kommunenummer: " + kommunenummer[i];
@@ -61,9 +65,17 @@ var detaljer = function() {
       + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[2018]
       + "% av kvinner i arbeid.";
 
-      infoCell3.innerHTML = "Utdanning: " + utd[kommunenummer[i]].population["01"].Menn[2017]
-      + "% av menn er utdannet og " + utd[kommunenummer[i]].population["01"].Kvinner[2017] +
+      infoCell3.innerHTML = "Utdanning grunnskolenivå: " + utd[kommunenummer[i]].population["01"].Menn[2017]
+      + "% av menn og " + utd[kommunenummer[i]].population["01"].Kvinner[2017] +
       "% av kvinner er utdannet.";
+
+      // infoCell4.innerHTML = "Utdanning videregående: " + utd[kommunenummer[i]].population["02a"].Menn[2017]
+      // + "% av menn og " + utd[kommunenummer[i]].population["02a"].Kvinner[2017] +
+      // "% av kvinner er utdannet.";
+
+      // infoCell5.innerHTML = "Utdanning universitet/høyskole kort: " + utd[kommunenummer[i]].population["03a"].Menn[2017]
+      // + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
+      // "% av kvinner.";
 
     }
   };
