@@ -37,16 +37,24 @@ var detaljer = function() {
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
 
+  var sysselsatte = syssel.kommuneinfo;
+  var utdanninger = utdanning.kommuneinfo;
+
   for (var i = 0; i < kommunenavn.length; i++) {
     if (kommunenavn[i] === input || kommunenummer[i] === input) {
       var row1 = detaljer.insertRow(0);
       var nameCell = row1.insertCell(0);
       var idCell = row1.insertCell(1);
       var infoCell = row1.insertCell(2);
-      nameCell.innerHTML = kommunenavn[i];
-      idCell.innerHTML = kommunenummer[i];
-      infoCell.innerHTML = info[kommunenummer[i]].population.Menn[2018]
-      + info[kommunenummer[i]].population.Kvinner[2018];
+      var infoCell2 = row1.insertCell(3);
+
+      nameCell.innerHTML ="Kommunenavn: " + kommunenavn[i];
+      idCell.innerHTML = "Kommunenummer: " + kommunenummer[i];
+      infoCell.innerHTML = "Befolkning: " + (info[kommunenummer[i]].population.Menn[2018]
+      + info[kommunenummer[i]].population.Kvinner[2018]);
+
+      infoCell2.innerHTML = "Sysselsatte: " + sysselsatte[kommunenummer[i]].population.Menn[2018]
+      + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[2018] + "% av kvinner i arbeid.";
     }
   };
 }
@@ -84,6 +92,10 @@ function Befolkning(url) {
   }
 
   this.getSyssel = function(kommunenummer) {
+    return this.kommuneinfo[kommunenummer];
+  }
+
+  this.getUtdanning = function(kommunenummer) {
     return this.kommuneinfo[kommunenummer];
   }
 
