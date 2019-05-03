@@ -87,17 +87,16 @@ var detaljer = function() {
       "% av kvinner.";
 
 
-
-      c2r4.innerHTML = "Utdanning UNI / høyskole lang: " + utd[kommunenummer[i]].population["03a"].Menn[2017]
-      + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
+      c2r4.innerHTML = "Utdanning UNI / høyskole lang: " + utd[kommunenummer[i]].population["04a"].Menn[2017]
+      + "% av menn og " + utd[kommunenummer[i]].population["04a"].Kvinner[2017] +
       "% av kvinner.";
 
-      c1r5.innerHTML = "Utdanning fagskole: " + utd[kommunenummer[i]].population["03a"].Menn[2017]
-      + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
+      c1r5.innerHTML = "Utdanning fagskole: " + utd[kommunenummer[i]].population["11"].Menn[2017]
+      + "% av menn og " + utd[kommunenummer[i]].population["11"].Kvinner[2017] +
       "% av kvinner.";
 
-      c2r5.innerHTML = "Utdanning fagskole: " + utd[kommunenummer[i]].population["03a"].Menn[2017]
-      + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
+      c2r5.innerHTML = "Ingenting fullført / uoppgitt: " + utd[kommunenummer[i]].population["09a"].Menn[2017]
+      + "% av menn og " + utd[kommunenummer[i]].population["09a"].Kvinner[2017] +
       "% av kvinner.";
     }
   };
