@@ -13,11 +13,12 @@ body {
   box-shadow: 0px 5px 10px gray;
 }
 
-.th {
-  text-align: center;
-  align-items: center;
-  align-content: center;
-  table-layout: inherit;
+input {
+  font-size: 16px;
+}
+
+.searchbtn {
+  font-size: 16px;
 }
 
 .detaljerTable {
@@ -26,10 +27,6 @@ body {
 
 .align {
   table-layout: fixed;
-}
-
-#detaljer {
-
 }
 
 .center {
@@ -86,19 +83,27 @@ li a {
 
 table {
   font-family: arial, sans-serif;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
   width: 100%;
+  border: 1px solid black;
+
+}
+
+th {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  table-layout: inherit;
 }
 
 h4 {
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding : 1px;
 }
 
-td, th {
+td {
   border: 1px solid #dddddd;
   text-align: left;
-  padding: 8px;
+  padding: 5px;
 }
 
 footer {
