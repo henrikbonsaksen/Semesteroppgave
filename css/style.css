@@ -23,16 +23,15 @@ body {
   height: 100px;
   max-width: 100%;
   border-radius: 20px;
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 67%, rgba(0,212,255,1) 100%);
+  background: linear-gradient(90deg, rgba(2,66,111,1) 0%, rgba(67,180,180,1) 55%, rgba(26,154,112,0.9164040616246498) 100%);
   /* background-image: url("../img/header.jpg"); */
 }
 
 
-
 .headerimg:hover {
-  transition: 0.5s;
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 20%, rgba(0,212,255,1) 100%);
-  opacity: 0.8;
+  transition: 0.8s;
+  background: linear-gradient(90deg, rgba(2,66,111,1) 23%, rgba(67,180,180,1) 72%, rgba(26,154,112,1) 100%);
+  opacity: 0.9;
 }
 
 input {
