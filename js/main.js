@@ -78,7 +78,7 @@ var detaljer = function() {
       + "% av menn og " + utd[kommunenummer[i]].population["01"].Kvinner[2017] +
       "% av kvinner er utdannet.";
 
-      c2r3.innerHTML = "Utdanning VGS: " + utd[kommunenummer[i]].population["02a"].Menn[2017]
+      c2r3.innerHTML = "<h4>Utdanning VGS:</h4> " + utd[kommunenummer[i]].population["02a"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["02a"].Kvinner[2017] +
       "% av kvinner er utdannet.";
 
