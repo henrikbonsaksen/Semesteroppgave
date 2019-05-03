@@ -117,7 +117,6 @@ var detaljer = function() {
     }
   };
 
-
 }
 
 function performGetRequest(url, callback) {
@@ -187,13 +186,7 @@ var syssel = new Befolkning(sysselsatte_wildboy);
 befolkning.onload = function() {
   populateDetaljerView();
 }
-utdanning.onload = function() {
-  populateDetaljerView();
-}
 
-syssel.onload = function() {
-  populateDetaljerView();
-}
 
 befolkning.load();
 utdanning.load();
@@ -241,7 +234,7 @@ var sammenlign = function(input, table) {
 
 
       for (var x = 2005; x < 2019; x++) {
-        c1r2.innerHTML += "<h4>Sysselsatte år " + x + ": </h4>" + sysselsatte[kommunenummer[i]].population.Menn[x]
+        c1r2.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + sysselsatte[kommunenummer[i]].population.Menn[x]
         + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[x]
         + "% av kvinner i arbeid.";
       }

@@ -16,7 +16,6 @@ body {
 .headerimg {
   display: block;
   opacity: 1;
-  padding-top: 8px;
   margin-left: 0%;
   margin-right: 0%;
   position: relative;
@@ -66,8 +65,7 @@ input {
 }
 
 .navbar {
-  padding-top: 5px;
-  display: flex;
+  width: auto;
 
 }
 
@@ -105,7 +103,7 @@ li a {
 table {
   font-family: arial, sans-serif;
   /* border-collapse: collapse; */
-  width: 100%;
+  width: 80%;
   border: 1px solid black;
 
 }
