@@ -170,7 +170,7 @@ function Befolkning(url) {
         self.kommunenummer.push(kommuneData.kommunenummer);
         self.kommuneinfo[kommuneData.kommunenummer] = { population: kommuneData };
       };
-      
+
       if (self.onload) {
         self.onload();
       }
@@ -223,24 +223,26 @@ var sammenlign = function(input, table) {
       var nameCell = row1.insertCell(0);
       var idCell = row1.insertCell(1);
 
+
       var row2 = detaljer.insertRow(1);
       var row3 = detaljer.insertRow(1);
 
-
+      var c1r1 = row1.insertCell(2);
       var c1r2 = row2.insertCell(0);
       var c2r2 = row2.insertCell(1);
 
-
-
       nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
       idCell.innerHTML = "<h4>Kommunenummer: </h4>" + kommunenummer[i];
-      c1r2.innerHTML = "<h4>Befolkning: </h4>" + (info[kommunenummer[i]].population.Menn[2018]
+
+      c1r1.innerHTML = "<h4>Befolkning: </h4>" + (info[kommunenummer[i]].population.Menn[2018]
       + info[kommunenummer[i]].population.Kvinner[2018]);
 
-      c2r2.innerHTML = "<h4>Sysselsatte: </h4>" + sysselsatte[kommunenummer[i]].population.Menn[2018]
-      + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[2018]
-      + "% av kvinner i arbeid.";
 
+      for (var x = 1970; x < 2018; x++) {
+        c1r2.innerHTML += "<h4>Sysselsatte år " + x + ": </h4>" + sysselsatte[kommunenummer[i]].population.Menn[x]
+        + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[x]
+        + "% av kvinner i arbeid.";
+      }
     }
   };
 }
