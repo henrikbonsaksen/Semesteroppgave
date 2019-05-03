@@ -4,30 +4,13 @@ let utdanning_wildboy = "http://wildboy.uib.no/~tpe056/folk/85432.json";
 let befolkning_wildboy = "http://wildboy.uib.no/~tpe056/folk/104857.json";
 let sysselsatte_wildboy = "http://wildboy.uib.no/~tpe056/folk/100145.json";
 
-var populateOversiktView = function() {
-  var detaljerTable = document.getElementsByClassName("oversikt")[0];
-  var kommunenavn = befolkning.getNames();
-  var kommunenummer = befolkning.getIDs();
-  var info = befolkning.kommuneinfo;
-
-  for (var i = 0; i < kommunenavn.length; i++) {
-    var row = detaljerTable.insertRow(0);
-    var nameCell = row.insertCell(0);
-    var idCell = row.insertCell(1);
-    var infoCell = row.insertCell(2);
-
-    nameCell.innerHTML = kommunenavn[i];
-    idCell.innerHTML = kommunenummer[i];
-    infoCell.innerHTML = info[kommunenummer[i]].population.Menn[2018] + info[kommunenummer[i]].population.Kvinner[2018];
-    // console.log(info[kommunenummer[i]].population.Menn[2018]);
-  }
-}
 
 var populateDetaljerView = function() {
+  //tables:
   var oversiktTable = document.getElementsByClassName("oversikt")[0];
-  var detaljerTable = document.getElementsByClassName('detaljerTable'[0]);
   var sammenligningTable1 = document.getElementsByClassName('sammenligningTable1'[0]);
   var sammenligningTable2 = document.getElementsByClassName('sammenligningTable2'[0]);
+
   var kommunenavn = befolkning.getNames();
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
@@ -42,12 +25,30 @@ var populateDetaljerView = function() {
     idCell.innerHTML = kommunenummer[i];
     infoCell.innerHTML = info[kommunenummer[i]].population.Menn[2018] + info[kommunenummer[i]].population.Kvinner[2018];
     // console.log(info[kommunenummer[i]].population.Menn[2018]);
-  }
-
-
+  };
 }
 
+//søk detaljer
+var detaljer = function() {
+  var input = document.getElementById("detaljer").value;
+  var detaljer = document.getElementsByClassName('detaljerTable'[0]);
+  var kommunenavn = befolkning.getNames();
+  var kommunenummer = befolkning.getIDs();
+  var info = befolkning.kommuneinfo;
 
+  for (var i = 0; i < kommunenavn.length; i++) {
+    var row1 = detaljer.insertRow(0);
+    var nameCell = row1.insertCell(0);
+    var idCell = row1.insertCell(1);
+    var infoCell = row1.insertCell(2);
+
+    if (kommunenavn[i] === input || kommunenummer[i] === input) {
+      nameCell.innerHTML = kommunenavn[i];
+      idCell.innerHTML = kommunenummer[i];
+      infoCell.innerHTML = info[kommunenummer[i]].population.Menn[2018] + info[kommunenummer[i]].population.Kvinner[2018];
+    }
+  };
+}
 
 function performGetRequest(url, callback) {
   var request = new XMLHttpRequest();
@@ -127,28 +128,31 @@ befolkning.load();
 utdanning.load();
 syssel.load();
 
-//søk detaljer
-function detaljer() {
-  var input = document.getElementById("detaljer").value;
-  data = befolkning.getNames();
-  kommunenum = befolkning.getIDs();
-  // console.log(input);
-  for (var i=0; i < data.length; i++) {
-    if (data[i] === input || kommunenum[i] === input) {
-      console.log(data[i]);
-      console.log(kommunenum[i]);
-    }
-    // document.getElementById("detaljerTable").innerHTML = input;
 
-    }
-  }
 
-  // for (var i=0; i < info.length; i++) {
-  //   if (info[i][1].kommunenummer === info.kommunenummer) {
-  //     mennData = info[i][1].Menn
-  //     kvinnerData = info[i][1].Kvinner
-  //     console.log(mennData)
-  //     console.log(kvinnerData)
+
+  // var populateDetaljerView = function() {
+  //   //tables:
+  //   var oversiktTable = document.getElementsByClassName("oversikt")[0];
+  //   var sammenligningTable1 = document.getElementsByClassName('sammenligningTable1'[0]);
+  //   var sammenligningTable2 = document.getElementsByClassName('sammenligningTable2'[0]);
+  //
+  //   var kommunenavn = befolkning.getNames();
+  //   var kommunenummer = befolkning.getIDs();
+  //   var info = befolkning.kommuneinfo;
+  //
+  //   for (var i = 0; i < kommunenavn.length; i++) {
+  //     var row = oversiktTable.insertRow(0);
+  //     var nameCell = row.insertCell(0);
+  //     var idCell = row.insertCell(1);
+  //     var infoCell = row.insertCell(2);
+  //
+  //     nameCell.innerHTML = kommunenavn[i];
+  //     idCell.innerHTML = kommunenummer[i];
+  //     infoCell.innerHTML = info[kommunenummer[i]].population.Menn[2018] + info[kommunenummer[i]].population.Kvinner[2018];
+  //     // console.log(info[kommunenummer[i]].population.Menn[2018]);
+  //   };
+  // }
 
 
 //Sammenligning søk funksjon
