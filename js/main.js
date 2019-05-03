@@ -55,8 +55,9 @@ var detaljer = function() {
   var info = befolkning.kommuneinfo;
 
   var sysselsatte = syssel.kommuneinfo;
+
   var utd = utdanning.kommuneinfo;
-  console.log(utd);
+  // console.log(utd);
   for (var i = 0; i < kommunenavn.length; i++) {
     if (kommunenavn[i] === input || kommunenummer[i] === input) {
       var row1 = detaljer.insertRow(0);
@@ -215,6 +216,7 @@ var sammenlign = function(input, table) {
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
   var sysselsatte = syssel.kommuneinfo;
+  console.log(sysselsatte);
   var utd = utdanning.kommuneinfo;
 
   for (var i = 0; i < kommunenavn.length; i++) {
@@ -238,7 +240,7 @@ var sammenlign = function(input, table) {
       + info[kommunenummer[i]].population.Kvinner[2018]);
 
 
-      for (var x = 1970; x < 2018; x++) {
+      for (var x = 2005; x < 2019; x++) {
         c1r2.innerHTML += "<h4>Sysselsatte år " + x + ": </h4>" + sysselsatte[kommunenummer[i]].population.Menn[x]
         + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[x]
         + "% av kvinner i arbeid.";
