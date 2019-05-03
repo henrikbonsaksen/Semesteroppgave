@@ -4,6 +4,23 @@ let utdanning_wildboy = "http://wildboy.uib.no/~tpe056/folk/85432.json";
 let befolkning_wildboy = "http://wildboy.uib.no/~tpe056/folk/104857.json";
 let sysselsatte_wildboy = "http://wildboy.uib.no/~tpe056/folk/100145.json";
 
+// vise-og-skjule-knapp
+function showBox(id) {
+  var boxes = document.getElementsByClassName("infoBox");
+  var box = document.getElementById(id);
+  for (var i = 0; i < boxes.length; i++) {
+    boxes[i].classList.replace("show", "hidden");
+  }
+
+  if (box.classList.contains("show")) {
+    box.classList.replace("show", "hidden");
+  }
+
+  else if (box.classList.contains !== "show") {
+    box.classList.replace("hidden", "show");
+  }
+};
+
 
 var populateDetaljerView = function() {
   //tables:
@@ -32,9 +49,7 @@ var populateDetaljerView = function() {
 var detaljer = function() {
   var input = document.getElementById("detaljer").value;
   var inputid = document.getElementById("detaljer");
-
   var detaljer = document.getElementsByClassName('detaljerTable')[0];
-
   var kommunenavn = befolkning.getNames();
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
@@ -187,50 +202,48 @@ utdanning.load();
 syssel.load();
 
 
+var removeTablerows = function() {
+  var table = document.all.tableid;
+  for(var i = table.rows.length - 1; i > 0; i--)
+  {
+  table.deleteRow(i);
+}
+}
+
 
 //Sammenligning søk funksjon
-function sammenlign() {
-  var input1 = document.getElementById("s1").value;
-  var input2 = document.getElementById('s2').value;
-  // console.log(value1, value2);
-  var data = befolkning.getNames();
-  var kommunenum = befolkning.getIDs();
-  var input1data;
-  var input2data;
+var sammenlign = function(input, table) {
+  var detaljer = document.getElementsByClassName(table)[0];
+  var kommunenavn = befolkning.getNames();
+  var kommunenummer = befolkning.getIDs();
+  var info = befolkning.kommuneinfo;
+  var sysselsatte = syssel.kommuneinfo;
+  var utd = utdanning.kommuneinfo;
 
-  for (var i=0; i < data.length; i++) {
-    if (data[i] === input1 || kommunenum[i] === input1) {
-      input1data = data[i] + " " + kommunenum[i];
+  for (var i = 0; i < kommunenavn.length; i++) {
+    if (kommunenavn[i] === input || kommunenummer[i] === input) {
+      var row1 = detaljer.insertRow(0);
+      var nameCell = row1.insertCell(0);
+      var idCell = row1.insertCell(1);
+
+      var row2 = detaljer.insertRow(1);
+      var row3 = detaljer.insertRow(1);
+
+
+      var c1r2 = row2.insertCell(0);
+      var c2r2 = row2.insertCell(1);
+
+
+
+      nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
+      idCell.innerHTML = "<h4>Kommunenummer: </h4>" + kommunenummer[i];
+      c1r2.innerHTML = "<h4>Befolkning: </h4>" + (info[kommunenummer[i]].population.Menn[2018]
+      + info[kommunenummer[i]].population.Kvinner[2018]);
+
+      c2r2.innerHTML = "<h4>Sysselsatte: </h4>" + sysselsatte[kommunenummer[i]].population.Menn[2018]
+      + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[2018]
+      + "% av kvinner i arbeid.";
+
     }
-
   };
-
-  for (var i=0; i < data.length; i++) {
-    if (data[i] === input2 || kommunenum[i] === input2) {
-      input2data = data[i] + " " + kommunenum[i];
-    }
-    }
-    document.getElementById("sammenligningTable1").innerHTML = "<br> Value 1: " + input1data + " og <br> Value 2: " + input2data;
-  };
-
-
-// vise-og-skjule-knapp
-function showBox(id) {
-  var boxes = document.getElementsByClassName("infoBox");
-  var box = document.getElementById(id);
-  for (var i = 0; i < boxes.length; i++) {
-    boxes[i].classList.replace("show", "hidden");
-  }
-
-  if (box.classList.contains("show")) {
-    box.classList.replace("show", "hidden");
-  }
-
-  else if (box.classList.contains !== "show") {
-    box.classList.replace("hidden", "show");
-  }
-};
-
-
-
-//
+}

@@ -10,14 +10,16 @@
   <body>
 
   <!-- navigering -->
+  <div class="headerimg">
   <header>
     <ul class="navbar">
       <li onclick="showBox('Introduksjon')" class="navbutton"><a href="#1">Introduksjon</a></li>
-      <li onclick="showBox('Oversikt')" class="navbutton"><a href="#2">Oversikt</a></li>
+      <li onclick="removeTablerows, showBox('Oversikt')" class="navbutton"><a href="#2">Oversikt</a></li>
       <li onclick="showBox('Detaljer')" class="navbutton"><a href="#3">Detaljer</a></li>
       <li onclick="showBox('Sammenligning')" class="navbutton"><a href="#4">Sammenligning</a></li>
     </ul>
   </header>
+</div>
 
 
   <!-- hovedinnhold -->
@@ -73,7 +75,7 @@
         </div>
             <div>
               <input type="search" id="detaljer" value="">
-              <button id="searchbtn" onclick="detaljer()">Søk</button>
+              <button id="searchbtn" onclick="removeTablerows, detaljer()">Søk</button>
               <br>
               <table class="detaljerTable">
               </table>
@@ -91,15 +93,15 @@
           <p> Her kan du gjøre sammenlingnede søk på kommuner: </p>
         </div>
       <div>
-        <input type="search" id="s1" placeholder="Første kommune" value="">
-        <input type="search" id="s2" placeholder="Andre kommune" value="">
-        <button onclick="sammenlign()"> Sammenlign </button>
+        <input type="search" id="s1" placeholder="Første kommune" value="Bergen">
+        <input type="search" id="s2" placeholder="Andre kommune" value="Halden">
+        <button onclick="removeTablerows, sammenlign(s1.value, 'sammenligningTable1'), sammenlign(s2.value, 'sammenligningTable2')"> Sammenlign </button>
         <br>
       </div>
       <div>
-        <table id="sammenligningTable1">
+        <table class="sammenligningTable1">
         </table>
-        <table id="sammenligningTable2">
+        <table class="sammenligningTable2">
         </table>
       </div>
 
