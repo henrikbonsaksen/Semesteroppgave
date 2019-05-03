@@ -69,13 +69,13 @@ var detaljer = function() {
       + "% av menn og " + utd[kommunenummer[i]].population["01"].Kvinner[2017] +
       "% av kvinner er utdannet.";
 
-      // infoCell4.innerHTML = "Utdanning videregående: " + utd[kommunenummer[i]].population["02a"].Menn[2017]
-      // + "% av menn og " + utd[kommunenummer[i]].population["02a"].Kvinner[2017] +
-      // "% av kvinner er utdannet.";
+      infoCell4.innerHTML = "Utdanning videregående: " + utd[kommunenummer[i]].population["02a"].Menn[2017]
+      + "% av menn og " + utd[kommunenummer[i]].population["02a"].Kvinner[2017] +
+      "% av kvinner er utdannet.";
 
-      // infoCell5.innerHTML = "Utdanning universitet/høyskole kort: " + utd[kommunenummer[i]].population["03a"].Menn[2017]
-      // + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
-      // "% av kvinner.";
+      infoCell5.innerHTML = "Utdanning universitet/høyskole kort: " + utd[kommunenummer[i]].population["03a"].Menn[2017]
+      + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
+      "% av kvinner.";
 
     }
   };

@@ -20,6 +20,10 @@ body {
   table-layout: inherit;
 }
 
+.detaljerTable {
+  table-layout: fixed;
+}
+
 .align {
   table-layout: fixed;
 }
