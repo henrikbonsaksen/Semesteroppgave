@@ -54,43 +54,49 @@
 
 
       </div>
-    </div>
+
 
 
 
     <div class="infoBox hidden"  id="Detaljer">
-      <br>
-      <h2>Detaljer</h2>
-      <p>Skal vise:</p>
-      <p>* Kommunens navn, kommunenummer, siste målte befolkning, siste målte statistikk for sysselseting
-      og høyere utdanning (antall og prosent).</p>
-      <p>* Etter disse punktvise detaljene skal dere også vise historisk utvikling i form av tabeller/lister for
-      befolkning, sysselsetting og utdanning. </p>
-      <p>I disse tabellene/listene kan dere velge selv om dere viser
-      all data dere har, eller bare data for de årene som forekommer i alle datasettene. Altså, dere kan
-      begrense årene dere viser data for til de årene som forekommer i alle tre datasett.<p>
+        <br>
+        <h2>Detaljer</h2>
 
-      <input type="search" id="detaljer" value="">
-      <button onclick="detaljer()">Søk</button>
-      <br>
-      <table class="detaljerTable">
-      </table>
-
-
+        <div>
+        <h5>Her kan du gjøre søk som gir flere detaljer om en kommune.</h5>
+          <p>Det er detaljer om som:</p>
+          <p>Kommunenavn</p>
+          <p>Kommunenummer</p>
+          <p>Siste målte befolkning</p>
+          <p>Siste målte statistikk for sysselseting</p>
+          <p>Siste målte statistikk for høyere utdanning  (antall og prosent).</p>
+        </div>
+            <div>
+              <input type="search" id="detaljer" value="">
+              <button onclick="detaljer()">Søk</button>
+              <br>
+              <table class="detaljerTable">
+              </table>
+            </div>
     </div>
+
+
 
     <div class="infoBox hidden"  id="Sammenligning">
       <br>
       <h2>Sammenligning</h2>
 
-      <div id="sammenligning">
-        <p> Gjør søk på kommuner under: </p>
 
+        <div>
+          <p> Her kan du gjøre sammenlingnede søk på kommuner: </p>
+        </div>
+      <div>
         <input type="search" id="s1" placeholder="Første kommune" value="">
         <input type="search" id="s2" placeholder="Andre kommune" value="">
         <button onclick="sammenlign()"> Sammenlign </button>
         <br>
-
+      </div>
+      <div>
         <table id="sammenligningTable1">
         </table>
         <table id="sammenligningTable2">
@@ -98,10 +104,7 @@
       </div>
 
     </div>
-    <br>
-</div>
-
-
+  </div>
 
   <footer>
     <br><br>
