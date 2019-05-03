@@ -170,8 +170,7 @@ function Befolkning(url) {
         self.kommunenummer.push(kommuneData.kommunenummer);
         self.kommuneinfo[kommuneData.kommunenummer] = { population: kommuneData };
       };
-      // console.log(self.kommuneinfo);
-
+      
       if (self.onload) {
         self.onload();
       }
@@ -179,9 +178,7 @@ function Befolkning(url) {
   }
 }
 
-
-
-
+// initialisering
 var befolkning = new Befolkning(befolkning_wildboy);
 var utdanning = new Befolkning(utdanning_wildboy);
 var syssel = new Befolkning(sysselsatte_wildboy);
@@ -201,7 +198,7 @@ befolkning.load();
 utdanning.load();
 syssel.load();
 
-
+// funksjon for å fjerne gamle rows, men må fikses:
 var removeTablerows = function() {
   var table = document.all.tableid;
   for(var i = table.rows.length - 1; i > 0; i--)
