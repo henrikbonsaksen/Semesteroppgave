@@ -232,7 +232,6 @@ var sammenlign = function(input, table) {
       c1r1.innerHTML = "<h4>Befolkning: </h4>" + (info[kommunenummer[i]].population.Menn[2018]
       + info[kommunenummer[i]].population.Kvinner[2018]);
 
-
       for (var x = 2005; x < 2019; x++) {
         c1r2.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + sysselsatte[kommunenummer[i]].population.Menn[x]
         + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[x]

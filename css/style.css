@@ -103,6 +103,7 @@ li a {
 table {
   font-family: arial, sans-serif;
   /* border-collapse: collapse; */
+  overflow-x:auto;
   width: 80%;
   border: 1px solid black;
 
