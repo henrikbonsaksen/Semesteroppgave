@@ -116,6 +116,11 @@ th {
   table-layout: inherit;
 }
 
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
 h4 {
   padding : 1px;
 }
