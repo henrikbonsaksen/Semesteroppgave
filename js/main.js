@@ -132,9 +132,9 @@ var detaljer = function() {
       "% av kvinner.";
 
       //historisk utvikling av data fra 2005 - 2017
-      //Befolking - fungerer ikke helt, må ses på nærmere.
-      for (var x = 2005; x < 2019; x++) {
-      c1r7.innerHTML = "<h4>Befolkning: </h4>" + (info[kommunenummer[i]].population.Menn[x];
+      //Befolking - fungerer ikke helt, itterer ikke pga at menn og kvinner legges sammen.
+      for (var x = 2005; x < 2018; x++) {
+      c1r7.innerHTML = "<h4>Befolkning: </h4>" + (info[kommunenummer[i]].population.Menn[x]
       + info[kommunenummer[i]].population.Kvinner[x]);
       }
 
