@@ -248,7 +248,7 @@ var sammenlign = function(input, table) {
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
   var sysselsatte = syssel.kommuneinfo;
-  console.log(sysselsatte);
+  // console.log(sysselsatte);
   var utd = utdanning.kommuneinfo;
 
   for (var i = 0; i < kommunenavn.length; i++) {
