@@ -140,14 +140,14 @@ var detaljer = function() {
 
       //Høyere Utdanning
       for (var x = 2005; x < 2018; x++) {
-      c1r6.innerHTML += "<h4>Utdanning UNI / høyskole lang år " + x + ": </h4>" + utd[kommunenummer[i]].population["04a"].Menn[x]
+      c1r6.innerHTML += "<h4>Utdanning UNI / høyskole i " + x + ": </h4>" + utd[kommunenummer[i]].population["04a"].Menn[x]
       + "% av menn og " + utd[kommunenummer[i]].population["04a"].Kvinner[x] +
       "% av kvinner.";
       }
 
       //Sysselsatte
       for (var x = 2005; x < 2018; x++) {
-      c2r6.innerHTML += "<h4>Sysselsatte år " + x + ": </h4>" + sysselsatte[kommunenummer[i]].population.Menn[x]
+      c2r6.innerHTML += "<h4>Sysselsatte i " + x + ": </h4>" + sysselsatte[kommunenummer[i]].population.Menn[x]
       + "% av menn og " + sysselsatte[kommunenummer[i]].population.Kvinner[x]
       + "% av kvinner.";
       }
@@ -156,7 +156,7 @@ var detaljer = function() {
 
 }
 
-//Skrive beskrivelse her
+//HTTP call request
 function performGetRequest(url, callback) {
   var request = new XMLHttpRequest();
   request.onreadystatechange = function() {
@@ -217,7 +217,7 @@ function Befolkning(url) {
   }
 }
 
-// initialisering
+// initialisering, klargjør og sender en forespørsel om å laste ned datasettet
 var befolkning = new Befolkning(befolkning_wildboy);
 var utdanning = new Befolkning(utdanning_wildboy);
 var syssel = new Befolkning(sysselsatte_wildboy);
@@ -226,12 +226,12 @@ befolkning.onload = function() {
   populateDetaljerView();
 }
 
-// klargjør og sender en forespørsel om å laste ned datasettet
+
 befolkning.load();
 utdanning.load();
 syssel.load();
 
-// funksjon for å fjerne gamle rows, men må fikses:
+
 var removeTablerows = function() {
   var table = document.all.tableid;
   for(var i = table.rows.length - 1; i > 0; i--)
