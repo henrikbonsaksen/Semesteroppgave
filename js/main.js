@@ -31,6 +31,7 @@ var populateDetaljerView = function() {
   var kommunenavn = befolkning.getNames();
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
+  console.log(info)
 
   for (var i = 0; i < kommunenavn.length; i++) {
     var row = oversiktTable.insertRow(0);
@@ -64,27 +65,26 @@ var detaljer = function() {
       var idCell = row1.insertCell(1);
 
       var row2 = detaljer.insertRow(1);
-      var row3 = detaljer.insertRow(1);
-      var row4 = detaljer.insertRow(1);
-      var row5 = detaljer.insertRow(1);
-      var row6 = detaljer.insertRow(1);
-      var row7 = detaljer.insertRow(1);
-
       var c1r2 = row2.insertCell(0);
       var c2r2 = row2.insertCell(1);
 
+      var row3 = detaljer.insertRow(1);
       var c1r3 = row3.insertCell(0);
       var c2r3 = row3.insertCell(1);
 
+      var row4 = detaljer.insertRow(1);
       var c1r4 = row4.insertCell(0);
       var c2r4 = row4.insertCell(1);
 
+      var row5 = detaljer.insertRow(1);
       var c1r5 = row5.insertCell(0);
       var c2r5 = row5.insertCell(1);
 
+      var row6 = detaljer.insertRow(5);
       var c1r6 = row6.insertCell(0);
       var c2r6 = row6.insertCell(1);
 
+      var row7 = detaljer.insertRow(6);
       var c1r7 = row7.insertCell(0);
       var c2r7 = row7.insertCell(1);
 
@@ -117,7 +117,7 @@ var detaljer = function() {
       "% av kvinner.";
 
       //Utdanning Universitet / høyskole lang
-      c2r4.innerHTML = "<h4>Utdanning UNI / høyskole lang: </h4>" + utd[kommunenummer[i]].population["04a"].Menn[2017]
+      c2r4.innerHTML = "<h4>Utdanning UNI / høyskole lang : </h4>" + utd[kommunenummer[i]].population["04a"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["04a"].Kvinner[2017] +
       "% av kvinner.";
 
@@ -131,22 +131,16 @@ var detaljer = function() {
       + "% av menn og " + utd[kommunenummer[i]].population["09a"].Kvinner[2017] +
       "% av kvinner.";
 
-      //historisk utvikling av data fra 2005 - 2017
-      //Befolking - fungerer ikke helt, itterer ikke pga at menn og kvinner legges sammen.
-      for (var x = 2005; x < 2018; x++) {
-      c1r7.innerHTML = "<h4>Befolkning: </h4>" + (info[kommunenummer[i]].population.Menn[x]
-      + info[kommunenummer[i]].population.Kvinner[x]);
-      }
+      // historisk utvikling av data fra 2005 - 2017
+      // Befolking - fungerer ikke helt, itterer ikke pga at menn og kvinner legges sammen.
+      for (var x = 2007; x < 2018; x++) {
+      c1r6.innerHTML += "<h4>Befolkning: " + x + "</h4>" + info[kommunenummer[i]].population.Menn[x]
+      + " menn og " + info[kommunenummer[i]].population.Kvinner[x] + " kvinner";
 
-      //Høyere Utdanning
-      for (var x = 2005; x < 2018; x++) {
-      c1r6.innerHTML += "<h4>Utdanning UNI / høyskole i " + x + ": </h4>" + utd[kommunenummer[i]].population["04a"].Menn[x]
+      c1r7.innerHTML += "<h4>Utdanning UNI / høyskole i " + x + ": </h4>" + utd[kommunenummer[i]].population["04a"].Menn[x]
       + "% av menn og " + utd[kommunenummer[i]].population["04a"].Kvinner[x] +
       "% av kvinner.";
-      }
 
-      //Sysselsatte
-      for (var x = 2005; x < 2018; x++) {
       c2r6.innerHTML += "<h4>Sysselsatte i " + x + ": </h4>" + sysselsatte[kommunenummer[i]].population.Menn[x]
       + "% av menn og " + sysselsatte[kommunenummer[i]].population.Kvinner[x]
       + "% av kvinner.";
@@ -168,7 +162,7 @@ function performGetRequest(url, callback) {
   request.send();
 }
 
-//Skrive beskrivelse her
+//Konstruktøren
 function Befolkning(url) {
   this.url = url;
   this.kommuner = [];
@@ -217,7 +211,7 @@ function Befolkning(url) {
   }
 }
 
-// initialisering, klargjør og sender en forespørsel om å laste ned datasettet
+// initialisering
 var befolkning = new Befolkning(befolkning_wildboy);
 var utdanning = new Befolkning(utdanning_wildboy);
 var syssel = new Befolkning(sysselsatte_wildboy);
@@ -226,12 +220,12 @@ befolkning.onload = function() {
   populateDetaljerView();
 }
 
-
+//sender en forespørsel om å laste ned datasettet
 befolkning.load();
 utdanning.load();
 syssel.load();
 
-
+//fjerne alle tabels fra forrige søk ved nytt søk
 var removeTablerows = function() {
   var table = document.all.tableid;
   for(var i = table.rows.length - 1; i > 0; i--)
