@@ -81,12 +81,8 @@ var detaljer = function() {
       var c2r5 = row5.insertCell(1);
 
       var row6 = detaljer.insertRow(5);
-      var c1r6 = row6.insertCell(0);
-      var c2r6 = row6.insertCell(1);
-
-      var row7 = detaljer.insertRow(6);
-      var c1r7 = row7.insertCell(0);
-      var c2r7 = row7.insertCell(1);
+      var row7 = detaljer.insertRow(5);
+      var row8 = detaljer.insertRow(5);
 
       //kommunenavn & kommunenummer
       nameCell.innerHTML ="<h4>Kommune: </h4>" + kommunenavn[i];
@@ -133,19 +129,24 @@ var detaljer = function() {
 
       // historisk utvikling av data fra 2005 - 2017
       // Befolking - fungerer ikke helt, itterer ikke pga at menn og kvinner legges sammen.
+
       for (var x = 2007; x < 2018; x++) {
-      c1r6.innerHTML += "<h4>Befolkning: " + x + "</h4>" + info[kommunenummer[i]].population.Menn[x]
-      + " menn og " + info[kommunenummer[i]].population.Kvinner[x] + " kvinner";
+        var b = -1; b < 11; b++;
+        var cells = row6.insertCell(b);
+        var cells2 = row7.insertCell(b);
+        var cells3 = row8.insertCell(b);
+        cells.innerHTML += "<h4>Befolkning: " + x + "</h4>" + info[kommunenummer[i]].population.Menn[x]
+        + " menn og " + info[kommunenummer[i]].population.Kvinner[x] + " kvinner";
 
-      c1r7.innerHTML += "<h4>Utdanning UNI / høyskole i " + x + ": </h4>" + utd[kommunenummer[i]].population["04a"].Menn[x]
-      + "% av menn og " + utd[kommunenummer[i]].population["04a"].Kvinner[x] +
-      "% av kvinner.";
+        cells2.innerHTML += "<h4>Utdanning UNI / høyskole i " + x + ": </h4>" + utd[kommunenummer[i]].population["04a"].Menn[x]
+        + "% av menn og " + utd[kommunenummer[i]].population["04a"].Kvinner[x] +
+        "% av kvinner.";
 
-      c2r6.innerHTML += "<h4>Sysselsatte i " + x + ": </h4>" + sysselsatte[kommunenummer[i]].population.Menn[x]
-      + "% av menn og " + sysselsatte[kommunenummer[i]].population.Kvinner[x]
-      + "% av kvinner.";
+        cells3.innerHTML += "<h4>Sysselsatte i " + x + ": </h4>" + sysselsatte[kommunenummer[i]].population.Menn[x]
+        + "% av menn og " + sysselsatte[kommunenummer[i]].population.Kvinner[x]
+        + "% av kvinner.";
+        }
       }
-    }
   };
 
 }
