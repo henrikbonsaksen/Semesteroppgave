@@ -258,22 +258,20 @@ var sammenlign = function(input, table) {
 
 
       var row2 = detaljer.insertRow(1);
-      var row3 = detaljer.insertRow(1);
 
-      var c1r1 = row1.insertCell(2);
-      var c1r2 = row2.insertCell(0);
-      var c2r2 = row2.insertCell(1);
 
       //Kommunenavn & kommunenummer
       nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
       idCell.innerHTML = "<h4>Kommunenummer: </h4>" + kommunenummer[i];
 
-      c1r1.innerHTML = "<h4>Befolkning: </h4>" + (info[kommunenummer[i]].population.Menn[2018]
-      + info[kommunenummer[i]].population.Kvinner[2018]);
+      // c1r1.innerHTML = "<h4>Befolkning: </h4>" + (info[kommunenummer[i]].population.Menn[2018]
+      // + info[kommunenummer[i]].population.Kvinner[2018]);
 
-      //Alle data for syssesetting fra 2005 - 2018
-      for (var x = 2005; x < 2019; x++) {
-        c1r2.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + sysselsatte[kommunenummer[i]].population.Menn[x]
+      //Alle data for syssesetting fra 2007 - 2018
+      for (var x = 2007; x < 2018; x++) {
+        var b = -1; b < 11; b++;
+        var cells = row2.insertCell(b);
+        cells.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + sysselsatte[kommunenummer[i]].population.Menn[x]
         + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[x]
         + "% av kvinner i arbeid.";
       }
