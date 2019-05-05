@@ -31,7 +31,7 @@ var populateDetaljerView = function() {
   var kommunenavn = befolkning.getNames();
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
-  console.log(info)
+  // console.log(info)
 
   for (var i = 0; i < kommunenavn.length; i++) {
     var row = oversiktTable.insertRow(0);
@@ -223,8 +223,12 @@ befolkning.onload = function() {
 
 //sender en forespørsel om å laste ned datasettet
 befolkning.load();
+console.log(befolkning, "1")
 utdanning.load();
+console.log(utdanning, "2")
 syssel.load();
+console.log(syssel, "3")
+
 
 //fjerne alle tabels fra forrige søk ved nytt søk
 var removeTablerows = function() {
