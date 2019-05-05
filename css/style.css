@@ -94,7 +94,7 @@ li a {
 table {
   font-family: arial, sans-serif;
   /* border-collapse: collapse; */
-
+  width: auto;
   /* overflow-x:auto; */
   border: 1px solid black;
 
@@ -115,7 +115,6 @@ td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 5px;
-  table-layout: fixed;
 }
 
 footer {
@@ -132,8 +131,8 @@ footer {
 }
 
 @media
-only screen and (max-width: 760px),
-(min-device-width: 760px) and (max-device-width: 1024px)  {
+only screen and (max-width: 1376px),
+(min-device-width: 1376px) and (max-device-width: 1376px)  {
 
 	/* Force table to not be like tables anymore */
 	table, thead, tbody, th, td, tr {
@@ -152,7 +151,7 @@ only screen and (max-width: 760px),
 
 	td {
 		/* Behave  like a "row" */
-		border: none;
+		border: 1px solid lightgray;
 		border-bottom: 1px solid #eee;
 		position: relative;
 		padding-left: 50%;
@@ -166,5 +165,4 @@ only screen and (max-width: 760px),
 		left: 6px;
 		width: 45%;
 		padding-right: 10px;
-		white-space: nowrap;
 	}
