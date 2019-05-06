@@ -231,22 +231,8 @@ befolkning.onload = function() {
 
 //sender en forespørsel om å laste ned datasettet
 befolkning.load();
-console.log(befolkning, "1")
 utdanning.load();
-console.log(utdanning, "2")
 syssel.load();
-console.log(syssel, "3")
-
-
-//fjerne alle tabels fra forrige søk ved nytt søk
-var removeTablerows = function() {
-  var table = document.all.tableid;
-  for(var i = table.rows.length - 1; i > 0; i--)
-  {
-  table.deleteRow(i);
-}
-}
-
 
 //Sammenligning søk funksjon
 var sammenlign = function(input, input2, table1, table2) {
@@ -256,16 +242,18 @@ var sammenlign = function(input, input2, table1, table2) {
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
   var sysselsatte = syssel.kommuneinfo;
-  // console.log(sysselsatte);
+  console.log(sysselsatte);
   var utd = utdanning.kommuneinfo;
 
   for (var i = 0; i < kommunenavn.length; i++) {
     if (kommunenavn[i] === input || kommunenummer[i] === input) {
+      // oppretting av rows og cells
       var row1 = detaljer.insertRow(0);
       var nameCell = row1.insertCell(0);
       var idCell = row1.insertCell(1);
       var row2 = detaljer.insertRow(1);
-      //Kommunenavn & kommunenummer
+
+      //Kommunenavn & kommunenummer tilegnet korrekte celler
       nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
       idCell.innerHTML = "<h4>Kommunenummer: </h4>" + kommunenummer[i];
 
@@ -273,24 +261,31 @@ var sammenlign = function(input, input2, table1, table2) {
       for (var x = 2007; x < 2018; x++) {
         var valueMenn = sysselsatte[kommunenummer[i]].population.Menn[x];
         var valueKvinner = sysselsatte[kommunenummer[i]].population.Kvinner[x];
-        var total = valueMenn + valueKvinner;
+        var total1 = valueMenn + valueKvinner;
         var b = -1; b < 11; b++;
         var cells = row2.insertCell(b);
-        cells.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + sysselsatte[kommunenummer[i]].population.Menn[x]
-        + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[x]
+        cells.classList.add("low");
+        cells.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + valueMenn
+        + "% av menn i arbeid og " + valueKvinner
         + "% av kvinner i arbeid.";
+        if (total1 > total2) {
+          console.log(total1 + " " + total2);
+          cells.classList.replace("low" ,"high");
+        }
       }
     }
   };
 
+
   for (var i = 0; i < kommunenavn.length; i++) {
     if (kommunenavn[i] === input2 || kommunenummer[i] === input2) {
+      // oppretting av rows og cells
       var row1 = detaljer2.insertRow(0);
       var nameCell = row1.insertCell(0);
       var idCell = row1.insertCell(1);
       var row2 = detaljer.insertRow(1);
 
-      //Kommunenavn & kommunenummer
+      //Kommunenavn & kommunenummer tilegnet korrekte celler
       nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
       idCell.innerHTML = "<h4>Kommunenummer: </h4>" + kommunenummer[i];
 
@@ -298,48 +293,20 @@ var sammenlign = function(input, input2, table1, table2) {
       for (var x = 2007; x < 2018; x++) {
         var valueMenn = sysselsatte[kommunenummer[i]].population.Menn[x];
         var valueKvinner = sysselsatte[kommunenummer[i]].population.Kvinner[x];
-        var total = valueMenn + valueKvinner;
+        var total2 = valueMenn + valueKvinner;
         var b = -1; b < 11; b++;
         var cells = row2.insertCell(b);
+        cells.classList.add("high");
         cells.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + valueMenn
         + "% av menn i arbeid og " + valueKvinner
         + "% av kvinner i arbeid.";
+        if (total2 > total1) {
+          console.log(total1 + " " + total2);
+          cells.classList.replace("high" ,"low");
+        }
+
       }
     }
   };
 
-
 }
-
-// var sammenlign2 = function(input, table) {
-//   var detaljer = document.getElementsByClassName(table)[0];
-//   var kommunenavn = befolkning.getNames();
-//   var kommunenummer = befolkning.getIDs();
-//   var info = befolkning.kommuneinfo;
-//   var sysselsatte = syssel.kommuneinfo;
-//   // console.log(sysselsatte);
-//   var utd = utdanning.kommuneinfo;
-//
-//   for (var i = 0; i < kommunenavn.length; i++) {
-//     if (kommunenavn[i] === input || kommunenummer[i] === input) {
-//       var row1 = detaljer.insertRow(0);
-//       var nameCell = row1.insertCell(0);
-//       var idCell = row1.insertCell(1);
-//       var row2 = detaljer.insertRow(1);
-//
-//       //Kommunenavn & kommunenummer
-//       nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
-//       idCell.innerHTML = "<h4>Kommunenummer: </h4>" + kommunenummer[i];
-//
-//       //Alle data for syssesetting fra 2007 - 2018
-//       for (var x = 2007; x < 2018; x++) {
-//         var value = (sysselsatte[kommunenummer[i]].population.Menn[x] + sysselsatte[kommunenummer[i]].population.Kvinner[x]);
-//         var b = -1; b < 11; b++;
-//         var cells = row2.insertCell(b);
-//         cells.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + sysselsatte[kommunenummer[i]].population.Menn[x]
-//         + "% av menn i arbeid og " + sysselsatte[kommunenummer[i]].population.Kvinner[x]
-//         + "% av kvinner i arbeid.";
-//       }
-//     }
-//   };
-// }
