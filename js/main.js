@@ -75,22 +75,23 @@ var detaljer = function() {
       var row2 = detaljer.insertRow(1);
       var c1r2 = row2.insertCell(0);
       var c2r2 = row2.insertCell(1);
+      var c3r2 = row2.insertCell(2);
+      var c4r2 = row2.insertCell(3);
 
-      var row3 = detaljer.insertRow(1);
+      var row3 = detaljer.insertRow(2);
       var c1r3 = row3.insertCell(0);
       var c2r3 = row3.insertCell(1);
+      var c3r3 = row3.insertCell(2);
+      var c4r3 = row3.insertCell(3);
 
-      var row4 = detaljer.insertRow(1);
+      var row4 = detaljer.insertRow(3);
       var c1r4 = row4.insertCell(0);
-      var c2r4 = row4.insertCell(1);
+      c1r4.innerHTML = "Historisk data: "
 
-      var row5 = detaljer.insertRow(1);
-      var c1r5 = row5.insertCell(0);
-      var c2r5 = row5.insertCell(1);
 
-      var row6 = detaljer.insertRow(5);
+      var row6 = detaljer.insertRow(4);
       var row7 = detaljer.insertRow(5);
-      var row8 = detaljer.insertRow(5);
+      var row8 = detaljer.insertRow(6);
 
       //kommunenavn & kommunenummer
       nameCell.innerHTML ="<h4>Kommune: </h4>" + kommunenavn[i];
@@ -106,32 +107,32 @@ var detaljer = function() {
       + "% av kvinner i arbeid.";
 
       //Utdaninng grunnskole
-      c1r3.innerHTML = "<h4>Utdanning grunnskole: </h4>" + utd[kommunenummer[i]].population["01"].Menn[2017]
+      c3r2.innerHTML = "<h4>Utdanning grunnskole: </h4>" + utd[kommunenummer[i]].population["01"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["01"].Kvinner[2017] +
       "% av kvinner er utdannet.";
 
       //Utdanning VGS
-      c2r3.innerHTML = "<h4>Utdanning VGS: </h4> " + utd[kommunenummer[i]].population["02a"].Menn[2017]
+      c4r2.innerHTML = "<h4>Utdanning VGS: </h4> " + utd[kommunenummer[i]].population["02a"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["02a"].Kvinner[2017] +
       "% av kvinner er utdannet.";
 
       //Utdanning Universitet / høyskole kort
-      c1r4.innerHTML = "<h4>Utdanning UNI / høyskole kort: </h4>" + utd[kommunenummer[i]].population["03a"].Menn[2017]
+      c1r3.innerHTML = "<h4>Utdanning UNI / høyskole kort: </h4>" + utd[kommunenummer[i]].population["03a"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
       "% av kvinner.";
 
       //Utdanning Universitet / høyskole lang
-      c2r4.innerHTML = "<h4>Utdanning UNI / høyskole lang : </h4>" + utd[kommunenummer[i]].population["04a"].Menn[2017]
+      c2r3.innerHTML = "<h4>Utdanning UNI / høyskole lang : </h4>" + utd[kommunenummer[i]].population["04a"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["04a"].Kvinner[2017] +
       "% av kvinner.";
 
       //Utdanning fagskole
-      c1r5.innerHTML = "<h4>Utdanning fagskole: </h4>" + utd[kommunenummer[i]].population["11"].Menn[2017]
+      c3r3.innerHTML = "<h4>Utdanning fagskole: </h4>" + utd[kommunenummer[i]].population["11"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["11"].Kvinner[2017] +
       "% av kvinner.";
 
       //Ingenting fullført / uoppgitt
-      c2r5.innerHTML = "<h4>Ingenting fullført / uoppgitt: </h4>" + utd[kommunenummer[i]].population["09a"].Menn[2017]
+      c4r3.innerHTML = "<h4>Ingenting fullført / uoppgitt: </h4>" + utd[kommunenummer[i]].population["09a"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["09a"].Kvinner[2017] +
       "% av kvinner.";
 
@@ -268,10 +269,7 @@ var sammenlign = function(input, input2, table1, table2) {
         cells.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + valueMenn
         + "% av menn i arbeid og " + valueKvinner
         + "% av kvinner i arbeid.";
-        if (total1 > total2) {
-          console.log(total1 + " " + total2);
-          cells.classList.replace("low" ,"high");
-        }
+
       }
     }
   };
@@ -300,13 +298,20 @@ var sammenlign = function(input, input2, table1, table2) {
         cells.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + valueMenn
         + "% av menn i arbeid og " + valueKvinner
         + "% av kvinner i arbeid.";
-        if (total2 > total1) {
-          console.log(total1 + " " + total2);
-          cells.classList.replace("high" ,"low");
-        }
+
 
       }
     }
   };
+}
 
+var farger = function() {
+  if (sammenlign.total2 > sammenlign.total1) {
+    console.log(sammenlign.total1 + " " + sammenlign.total2);
+    cells.classList.replace("high" ,"low");
+  }
+  if (sammenlign.total1 > sammenlign.total2) {
+    console.log(sammenlign.total1 + " " + sammenlign.total2);
+    cells.classList.replace("high" ,"low");
+  }
 }
