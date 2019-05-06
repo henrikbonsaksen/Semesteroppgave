@@ -151,8 +151,8 @@ only screen and (max-width: 1376px),
 	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr {
 		position: absolute;
-		top: -9999px;
-		left: -9999px;
+		top: auto;
+		left: auto;
 	}
 
 	tr { border: 1px solid #ccc; }
