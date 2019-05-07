@@ -237,8 +237,8 @@ syssel.load();
 
 //Sammenligning søk funksjon
 var sammenlign = function(input, input2, table1, table2) {
-  var detaljer = document.getElementsByClassName(table1)[0];
-  var detaljer2 = document.getElementsByClassName(table2)[0];
+  var table1 = document.getElementsByClassName(table1)[0];
+  var table2 = document.getElementsByClassName(table2)[0];
   var headertable = document.getElementsByClassName("headertable")[0];
   var headertable2 = document.getElementsByClassName("headertable2")[0];
 
@@ -246,18 +246,18 @@ var sammenlign = function(input, input2, table1, table2) {
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
   var sysselsatte = syssel.kommuneinfo;
-  console.log(sysselsatte);
+  // console.log(sysselsatte);
   var utd = utdanning.kommuneinfo;
 
   for (var i = 0; i < kommunenavn.length; i++) {
     if (kommunenavn[i] === input2 || kommunenummer[i] === input2) {
       // oppretting av rows og cells
-      var row1 = detaljer.insertRow(0);
-      var header = headertable.insertRow(0);
-      var nameCell = header.insertCell(0);
-      var idCell = header.insertCell(1);
-      var row2 = detaljer.insertRow(1);
-      var row3 = detaljer.insertRow(2);
+      var row = table2.insertRow(0);
+      var header2 = headertable2.insertRow(0);
+      var nameCell = header2.insertCell(0);
+      var idCell = header2.insertCell(1);
+      var row2 = table2.insertRow(1);
+      var row3 = table2.insertRow(2);
 
       //Kommunenavn & kommunenummer tilegnet korrekte celler
       nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
@@ -283,13 +283,13 @@ var sammenlign = function(input, input2, table1, table2) {
   for (var i = 0; i < kommunenavn.length; i++) {
     if (kommunenavn[i] === input || kommunenummer[i] === input) {
       // oppretting av rows og cells
-      var row1 = detaljer2.insertRow(0);
-      var header = headertable2.insertRow(0);
+      var row1 = table1.insertRow(0);
+      var header = headertable.insertRow(0);
       var nameCell = header.insertCell(0);
       var idCell = header.insertCell(1);
 
-      var row2 = detaljer2.insertRow(1);
-      var row3 = detaljer2.insertRow(2);
+      var row22 = table1.insertRow(1);
+      var row33 = table1.insertRow(2);
 
       //Kommunenavn & kommunenummer tilegnet korrekte celler
       nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
@@ -301,8 +301,8 @@ var sammenlign = function(input, input2, table1, table2) {
         var valueKvinner = sysselsatte[kommunenummer[i]].population.Kvinner[x];
         var total2 = valueMenn + valueKvinner;
         var b = -1; b < 11; b++;
-        var cells = row2.insertCell(b);
-        var cellsR2 = row3.insertCell(b);
+        var cells = row22.insertCell(b);
+        var cellsR2 = row33.insertCell(b);
 
         cells.innerHTML += "<h5> " + x + ": </h5>";
         cells.appendChild(document.createTextNode(valueMenn));
