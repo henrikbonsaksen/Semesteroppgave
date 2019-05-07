@@ -236,8 +236,9 @@ utdanning.load();
 syssel.load();
 
 //Sammenligning søk funksjon
-var sammenlign = function(input) {
+var sammenlign = function(input, input2) {
   this.input = input;
+  this.input2 = input2;
   var kommunenavn = befolkning.getNames();
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
@@ -250,15 +251,22 @@ var sammenlign = function(input) {
   // table 1
   var body = document.getElementsByTagName('div')[8];
   var tbl = document.createElement('table');
-  tbl.classList.add("sammenligningTable1");
+  tbl.classList.add("flex");
   tbl.style.width = '100%';
   tbl.setAttribute('border', '1');
+
   var tbdy = document.createElement('tbody');
+  tbl.className = "sammenligningTable";
+
+  for (var x = 1; x < 3; x++) {
+    tbl.classList.add(x + "");
+  }
 
   for (var i = 0; i < kommunenavn.length; i++) {
     var knavn = kommunenavn[i];
     if (kommunenavn[i] === this.input || kommunenummer[i] === this.input) {
-      console.log(kommunenavn[i])
+
+      // console.log(kommunenavn[i])
       var navn = document.createElement('tr');
       navn.appendChild(document.createTextNode(knavn))
       var skille = document.createElement('tr');
@@ -289,9 +297,24 @@ var sammenlign = function(input) {
         tbdy.appendChild(menn);
         tbdy.appendChild(kvinner);
       }
+
       tbl.appendChild(tbdy);
-      body.appendChild(tbl)
-    };
+      body.appendChild(tbl);
+  };
+
+  // var table1 = document.getElementsByClassName("sammenligningTable");
+  // var table2 = document.getElementsByClassName("sammenligningTable");
+  // console.log(table1, table2);
+  // for (var e = 0; e < table1[0].rows[2].cells.length; e++) {
+  //   var menncell = table1[0].rows[2].cells[e].lastChild;
+  //   var kvinncell = table1[0].rows[3].cells[e].lastChild;
+  //   // console.log("menn:", menncell)
+  //   // console.log("kvinner:", kvinncell)
+  //   if (menncell < kvinncell){
+  //     menn.classList.add("bois");
+  //   }
+  // }
+
 }
 
 
