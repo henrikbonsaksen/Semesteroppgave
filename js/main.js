@@ -236,47 +236,43 @@ utdanning.load();
 syssel.load();
 
 //Sammenligning søk funksjon
-var sammenlign = function(input, input2, table1, table2) {
+var sammenlign = function(input) {
+  this.input = input;
   var kommunenavn = befolkning.getNames();
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
   var sysselsatte = syssel.kommuneinfo;
   var utd = utdanning.kommuneinfo;
 
-  var table1 = document.getElementsByClassName(table1)[0];
-  var table2 = document.getElementsByClassName(table2)[0];
   var headertable = document.getElementsByClassName("headertable")[0];
   var headertable2 = document.getElementsByClassName("headertable2")[0];
-  this.input = input;
-  this.input2 = input2;
 
+  // table 1
   var body = document.getElementsByTagName('div')[8];
   var tbl = document.createElement('table');
   tbl.classList.add("sammenligningTable1");
-
   tbl.style.width = '100%';
   tbl.setAttribute('border', '1');
   var tbdy = document.createElement('tbody');
 
-
   for (var i = 0; i < kommunenavn.length; i++) {
     var knavn = kommunenavn[i];
-    if (kommunenavn[i] === input || kommunenummer[i] === input) {
+    if (kommunenavn[i] === this.input || kommunenummer[i] === this.input) {
+      console.log(kommunenavn[i])
       var navn = document.createElement('tr');
       navn.appendChild(document.createTextNode(knavn))
       var skille = document.createElement('tr');
-      skille.appendChild(document.createTextNode("Data: "))
+      skille.appendChild(document.createTextNode("Sysselatte: "))
       var menn = document.createElement('tr');
-      menn.appendChild(document.createTextNode("Menn : "))
+      menn.appendChild(document.createTextNode("% Menn: "))
       var kvinner = document.createElement('tr');
-      kvinner.appendChild(document.createTextNode("Kvinner : "))
+      kvinner.appendChild(document.createTextNode("% Kvinner: "))
 
       for (var j = 2007; j < 2018; j++) {
         var valueMenn = sysselsatte[kommunenummer[i]].population.Menn[j];
         var valueKvinner = sysselsatte[kommunenummer[i]].population.Kvinner[j];
-        var b = -1; b < 11; b++;
         var years = document.createElement('td')
-        var yeardata = years.appendChild(document.createTextNode(j));
+        var yeardata = years.appendChild(document.createTextNode("År " + j));
 
         var menndata = document.createElement('td');
         menndata.appendChild(document.createTextNode(valueMenn))
@@ -296,48 +292,7 @@ var sammenlign = function(input, input2, table1, table2) {
       tbl.appendChild(tbdy);
       body.appendChild(tbl)
     };
-
-    //
-    // var tbl2 = document.createElement('table');
-    // tbl2.style.width = '100%';
-    // tbl2.setAttribute('border', '1');
-    // var tbdy2 = document.createElement('tbody');
-    //
-    // for (var x = 0; x < kommunenavn.length; x++) {
-    //   var knavn = kommunenavn[x];
-    //   if (kommunenavn[x] === input2 || kommunenummer[x] === input2) {
-    //     var navn = document.createElement('tr');
-    //     navn.appendChild(document.createTextNode(knavn))
-    //     var skille = document.createElement('tr');
-    //     skille.appendChild(document.createTextNode("data: "))
-    //     var menn = document.createElement('tr');
-    //     menn.appendChild(document.createTextNode("Menn : "))
-    //     var kvinner = document.createElement('tr');
-    //     kvinner.appendChild(document.createTextNode("Kvinner : "))
-    //
-    //     for (var l = 2007; l < 2018; l++) {
-    //       var valueMenn = sysselsatte[kommunenummer[i]].population.Menn[l];
-    //       var valueKvinner = sysselsatte[kommunenummer[i]].population.Kvinner[l];
-    //
-    //       var menndata = document.createElement('td');
-    //       menndata.appendChild(document.createTextNode(valueMenn))
-    //       var kvinnedata = document.createElement('td');
-    //       kvinnedata.appendChild(document.createTextNode(valueKvinner))
-    //
-    //       i == 2 && l == 2 ? td.setAttribute('rowSpan', '2') : null;
-    //       menn.appendChild(menndata)
-    //       kvinner.appendChild(kvinnedata)
-    //       }
-    //       tbdy.appendChild(navn);
-    //       tbdy.appendChild(skille);
-    //       tbdy.appendChild(menn);
-    //       tbdy.appendChild(kvinner);
-    //     }
-    //     tbl2.appendChild(tbdy);
-    //     body.appendChild(tbl)
-    //   };
 }
-
 
 
 //   for (var i = 0; i < kommunenavn.length; i++) {
