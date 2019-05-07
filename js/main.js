@@ -239,6 +239,9 @@ syssel.load();
 var sammenlign = function(input, input2, table1, table2) {
   var detaljer = document.getElementsByClassName(table1)[0];
   var detaljer2 = document.getElementsByClassName(table2)[0];
+  var headertable = document.getElementsByClassName("headertable")[0];
+  var headertable2 = document.getElementsByClassName("headertable2")[0];
+
   var kommunenavn = befolkning.getNames();
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
@@ -247,12 +250,14 @@ var sammenlign = function(input, input2, table1, table2) {
   var utd = utdanning.kommuneinfo;
 
   for (var i = 0; i < kommunenavn.length; i++) {
-    if (kommunenavn[i] === input || kommunenummer[i] === input) {
+    if (kommunenavn[i] === input2 || kommunenummer[i] === input2) {
       // oppretting av rows og cells
       var row1 = detaljer.insertRow(0);
-      var nameCell = row1.insertCell(0);
-      var idCell = row1.insertCell(1);
+      var header = headertable.insertRow(0);
+      var nameCell = header.insertCell(0);
+      var idCell = header.insertCell(1);
       var row2 = detaljer.insertRow(1);
+      var row3 = detaljer.insertRow(2);
 
       //Kommunenavn & kommunenummer tilegnet korrekte celler
       nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
@@ -262,26 +267,29 @@ var sammenlign = function(input, input2, table1, table2) {
       for (var x = 2007; x < 2018; x++) {
         var valueMenn = sysselsatte[kommunenummer[i]].population.Menn[x];
         var valueKvinner = sysselsatte[kommunenummer[i]].population.Kvinner[x];
-        var total1 = valueMenn + valueKvinner;
+        var total2 = valueMenn + valueKvinner;
         var b = -1; b < 11; b++;
-        var cells = row2.insertCell(b);
-        cells.classList.add("low");
-        cells.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + valueMenn
-        + "% av menn i arbeid og " + valueKvinner
-        + "% av kvinner i arbeid.";
+        var cells1 = row2.insertCell(b);
+        var cells1R2 = row3.insertCell(b);
+
+        cells1.innerHTML += "<h5> " + x + ": </h5>";
+        cells1.appendChild(document.createTextNode(valueMenn));
+        cells1R2.appendChild(document.createTextNode(valueKvinner));
 
       }
     }
   };
 
-
   for (var i = 0; i < kommunenavn.length; i++) {
-    if (kommunenavn[i] === input2 || kommunenummer[i] === input2) {
+    if (kommunenavn[i] === input || kommunenummer[i] === input) {
       // oppretting av rows og cells
       var row1 = detaljer2.insertRow(0);
-      var nameCell = row1.insertCell(0);
-      var idCell = row1.insertCell(1);
-      var row2 = detaljer.insertRow(1);
+      var header = headertable2.insertRow(0);
+      var nameCell = header.insertCell(0);
+      var idCell = header.insertCell(1);
+
+      var row2 = detaljer2.insertRow(1);
+      var row3 = detaljer2.insertRow(2);
 
       //Kommunenavn & kommunenummer tilegnet korrekte celler
       nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
@@ -294,24 +302,48 @@ var sammenlign = function(input, input2, table1, table2) {
         var total2 = valueMenn + valueKvinner;
         var b = -1; b < 11; b++;
         var cells = row2.insertCell(b);
-        cells.classList.add("high");
-        cells.innerHTML += "<h5>Sysselsatte år " + x + ": </h5>" + valueMenn
-        + "% av menn i arbeid og " + valueKvinner
-        + "% av kvinner i arbeid.";
+        var cellsR2 = row3.insertCell(b);
 
+        cells.innerHTML += "<h5> " + x + ": </h5>";
+        cells.appendChild(document.createTextNode(valueMenn));
+        cellsR2.appendChild(document.createTextNode(valueKvinner));
 
       }
     }
   };
 }
 
-var farger = function() {
-  if (sammenlign.total2 > sammenlign.total1) {
-    console.log(sammenlign.total1 + " " + sammenlign.total2);
-    cells.classList.replace("high" ,"low");
-  }
-  if (sammenlign.total1 > sammenlign.total2) {
-    console.log(sammenlign.total1 + " " + sammenlign.total2);
-    cells.classList.replace("high" ,"low");
-  }
-}
+// var table1 = document.getElementsByClassName("sammenligningTable1")[0];
+// var table2 = document.getElementsByClassName("sammenligningTable2")[0];
+//
+// var farger = function() {
+//   for (row in table1.rows) {
+//     console.log(row);
+//     for (cell in row) {
+//       for (data in cell.value) {
+//         console.log(data);
+//       }
+//
+//       if (sammenlign.total2 > sammenlign.total1) {
+//         console.log(sammenlign.total1 + " " + sammenlign.total2);
+//         cells.classList.replace("high" ,"low");
+//       }
+//       if (sammenlign.total1 > sammenlign.total2) {
+//         console.log(sammenlign.total1 + " " + sammenlign.total2);
+//         cells.classList.replace("high" ,"low");
+//     }
+//   }
+//   }
+// }
+//
+
+
+
+
+
+
+
+
+
+
+//
