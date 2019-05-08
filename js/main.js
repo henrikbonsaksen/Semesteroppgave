@@ -83,6 +83,8 @@ var detaljer = function() {
       var c2r3 = row3.insertCell(1);
       var c3r3 = row3.insertCell(2);
       var c4r3 = row3.insertCell(3);
+      var c5r3 = row3.insertCell(4);
+      var c6r3 = row3.insertCell(4);
 
       var row4 = detaljer.insertRow(3);
       var c1r4 = row4.insertCell(0);
@@ -121,18 +123,28 @@ var detaljer = function() {
       + "% av menn og " + utd[kommunenummer[i]].population["03a"].Kvinner[2017] +
       "% av kvinner.";
 
+      //Utdanning Universitet / høyskole kort i antall
+      c2r3.innerHTML = "<h4>Antall: </h4>" + ((utd[kommunenummer[i]].population["03a"].Menn[2017])/100 * info[kommunenummer[i]].population.Menn[2017]).toFixed(2)
+      + " antall av menn og " + ((utd[kommunenummer[i]].population["03a"].Kvinner[2017])/100 * info[kommunenummer[i]].population.Kvinner[2017]).toFixed(2) +
+      " antall av kvinner.";
+
       //Utdanning Universitet / høyskole lang
-      c2r3.innerHTML = "<h4>Utdanning UNI / høyskole lang : </h4>" + utd[kommunenummer[i]].population["04a"].Menn[2017]
+      c3r3.innerHTML = "<h4>Utdanning UNI / høyskole lang : </h4>" + utd[kommunenummer[i]].population["04a"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["04a"].Kvinner[2017] +
       "% av kvinner.";
 
+      //Utdanning Universitet / høyskole lang i antall
+      c4r3.innerHTML = "<h4>Antall: </h4>" + ((utd[kommunenummer[i]].population["04a"].Menn[2017])/100 * info[kommunenummer[i]].population.Menn[2017]).toFixed(2)
+      + " antall av menn og " + ((utd[kommunenummer[i]].population["04a"].Kvinner[2017])/100 * info[kommunenummer[i]].population.Kvinner[2017]).toFixed(2) +
+      " antall av kvinner.";
+
       //Utdanning fagskole
-      c3r3.innerHTML = "<h4>Utdanning fagskole: </h4>" + utd[kommunenummer[i]].population["11"].Menn[2017]
+      c5r3.innerHTML = "<h4>Utdanning fagskole: </h4>" + utd[kommunenummer[i]].population["11"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["11"].Kvinner[2017] +
       "% av kvinner.";
 
       //Ingenting fullført / uoppgitt
-      c4r3.innerHTML = "<h4>Ingenting fullført / uoppgitt: </h4>" + utd[kommunenummer[i]].population["09a"].Menn[2017]
+      c6r3.innerHTML = "<h4>Ingenting fullført / uoppgitt: </h4>" + utd[kommunenummer[i]].population["09a"].Menn[2017]
       + "% av menn og " + utd[kommunenummer[i]].population["09a"].Kvinner[2017] +
       "% av kvinner.";
 
@@ -366,6 +378,27 @@ var sammenlign2 = function(input) {
       tbl.appendChild(tbdy);
       body.appendChild(tbl);
   };
+  var table1 = document.getElementsByClassName("sammenligningTable1");
+  var table2 = document.getElementsByClassName("sammenligningTable2");
+  console.log(table1, table2);
+  console.log(table1[0]);
+}
+
+
+var highlight = function (){
+  for (var e = 0; e < table1[0].rows[2].cells.length; e++) {
+
+    var menncell1 = table1[0].rows[2].cells[e].lastChild;
+    var menncell2 = table2[0].rows[2].cells[e].lastChild;
+
+    var kvinncell1 = table1[0].rows[3].cells[e].lastChild;
+    var kvinncell2 = table2[0].rows[3].cells[e].lastChild;
+    console.log(kvinncell1);
+
+    // if (menncell < kvinncell){
+    //   menn.classList.add("bois");
+    // }
+  }
 }
 
 var highlighter = function() {
