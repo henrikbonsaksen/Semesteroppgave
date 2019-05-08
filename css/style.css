@@ -117,6 +117,7 @@ td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 5px;
+  width: 500px;
 }
 
 footer {
@@ -156,7 +157,6 @@ only screen and (max-width: 760px),
     display: flex;
     flex-direction: column;
 	}
-
 
 
 	thead tr {
