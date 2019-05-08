@@ -380,47 +380,33 @@ var sammenlign2 = function(input) {
   };
   var table1 = document.getElementsByClassName("sammenligningTable1");
   var table2 = document.getElementsByClassName("sammenligningTable2");
-  console.log(table1, table2);
-  console.log(table1[0]);
+  // console.log(table1, table2);
+  // console.log(table1[0]);
 }
 
-
-var highlight = function (){
-  for (var e = 0; e < table1[0].rows[2].cells.length; e++) {
-
-    var menncell1 = table1[0].rows[2].cells[e].lastChild;
-    var menncell2 = table2[0].rows[2].cells[e].lastChild;
-
-    var kvinncell1 = table1[0].rows[3].cells[e].lastChild;
-    var kvinncell2 = table2[0].rows[3].cells[e].lastChild;
-    console.log(kvinncell1);
-
-    // if (menncell < kvinncell){
-    //   menn.classList.add("bois");
-    // }
-  }
-}
 
 var highlighter = function() {
   var table1 = document.getElementsByClassName("sammenligningTable1");
   var table2 = document.getElementsByClassName("sammenligningTable2");
 
   for (var e = 0; e < table1[0].rows[2].cells.length; e++) {
-    var menncell1 = table1[0].rows[2].cells[e].lastChild;
-    console.log(menncell1);
-    var float = parseFloat(menncell1);
-    console.log(float);
+    var menncell1 = table1[0].rows[2].cells[e].lastChild.data;
+    var menncell2 = table2[0].rows[2].cells[e].lastChild.data;
+    var kvinncell1 = table1[0].rows[3].cells[e].lastChild.data;
+    var kvinncell2 = table2[0].rows[3].cells[e].lastChild.data;
 
-    // var menncell2 = parseFloat(table2[0].rows[2].cells[e].lastChild);
-    // var kvinncell1 = parseFloat(table1[0].rows[3].cells[e].lastChild);
-    // var kvinncell2 = parseFloat(table2[0].rows[3].cells[e].lastChild);
-    // console.log(menncell1);
-    // console.log(menncell2);
+    if (menncell1 > menncell2){
+      table1[0].rows[2].cells[e].classList.add("highlighted");
+    } else {
+      table2[0].rows[2].cells[e].classList.add("highlighted");
+    }
 
-    // if (menncell1 > menncell2){
-    //   console.log(menncell1 )
-    //   table1.menncell.classList.add("bois");
-    // }
+    if (kvinncell1 > kvinncell2){
+      table1[0].rows[3].cells[e].classList.add("highlighted");
+    } else {
+      table2[0].rows[3].cells[e].classList.add("highlighted");
+    }
+
   }
 }
 

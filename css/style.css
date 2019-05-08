@@ -143,8 +143,8 @@ footer {
   flex-direction: row;
 }
 
-.bois {
-  color: red;
+.highlighted {
+  background-color: lightgreen;
 }
 
 @media
