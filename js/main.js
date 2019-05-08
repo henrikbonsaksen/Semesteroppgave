@@ -30,14 +30,6 @@ var populateDetaljerView = function() {
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
 
-  // console.log(info)
-
-  // var headername = row.insertCell(0);
-  // var headername2 = row.insertCell(1);
-  // var headername3 = row.insertCell(2);
-  // headername.innerHTML = "<h4>Navn </h4>";
-  // headername2.innerHTML =  "<h4> Kommunenummer </h4>";
-  // headername3.innerHTML = "<h4> Befolkning 2018 </h4>";
 
 
   for (var i = 0; i < kommunenavn.length; i++) {
@@ -47,9 +39,9 @@ var populateDetaljerView = function() {
     var infoCell = row.insertCell(2);
     var bef = (info[kommunenummer[i]].population.Menn[2018]+info[kommunenummer[i]].population.Kvinner[2018])
 
-    nameCell.innerHTML = "Navn: " + kommunenavn[i];
-    idCell.innerHTML = "Kommunenummer: " + kommunenummer[i];
-    infoCell.innerHTML = "Befolkning 2018: " + bef;
+    nameCell.innerHTML = "<h4>Kommune: </h4>" + kommunenavn[i];
+    idCell.innerHTML = "<h4>Kommunenummer: </h4>" + kommunenummer[i];
+    infoCell.innerHTML = "<h4>Befolkning 2018: </h4>" + bef;
   };
 }
 
@@ -410,102 +402,3 @@ var highlighter = function() {
 
   }
 }
-
-//   for (var i = 0; i < kommunenavn.length; i++) {
-//     if (kommunenavn[i] === input2 || kommunenummer[i] === input2) {
-//       // oppretting av rows og cells
-//       var row = table2.insertRow(0);
-//       var header2 = headertable2.insertRow(0);
-//       var nameCell = header2.insertCell(0);
-//       var idCell = header2.insertCell(1);
-//       var row2 = table2.insertRow(1);
-//       var row3 = table2.insertRow(2);
-//       // var yearHeader = document.createElement('th');
-//       //Kommunenavn & kommunenummer tilegnet korrekte celler
-//       nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
-//       idCell.innerHTML = "<h4>Kommunenummer: </h4>" + kommunenummer[i];
-//
-//       //Alle data for syssesetting fra 2007 - 2018
-//       for (var x = 2007; x < 2018; x++) {
-//         var valueMenn = sysselsatte[kommunenummer[i]].population.Menn[x];
-//         var valueKvinner = sysselsatte[kommunenummer[i]].population.Kvinner[x];
-//         var total2 = valueMenn + valueKvinner;
-//         var b = -1; b < 11; b++;
-//         var cells1 = yearHeader.insertCell(b);
-//         var cells1R2 = row3.insertCell(b);
-//
-//         cells1.innerHTML += "<th> " + x + ": </th>";
-//         cells1.appendChild(document.createTextNode(valueMenn));
-//         cells1R2.appendChild(document.createTextNode(valueKvinner));
-//
-//       }
-//     }
-//   };
-//
-//   for (var i = 0; i < kommunenavn.length; i++) {
-//     if (kommunenavn[i] === input || kommunenummer[i] === input) {
-//       // oppretting av rows og cells
-//       var row1 = table1.insertRow(0);
-//       var header = headertable.insertRow(0);
-//       var nameCell = header.insertCell(0);
-//       var idCell = header.insertCell(1);
-//
-//       var row22 = table1.insertRow(1);
-//       var row33 = table1.insertRow(2);
-//
-//       //Kommunenavn & kommunenummer tilegnet korrekte celler
-//       nameCell.innerHTML ="<h4>Kommunenavn: </h4>" + kommunenavn[i];
-//       idCell.innerHTML = "<h4>Kommunenummer: </h4>" + kommunenummer[i];
-//
-//       //Alle data for syssesetting fra 2007 - 2018
-//       for (var x = 2007; x < 2018; x++) {
-//         var valueMenn = sysselsatte[kommunenummer[i]].population.Menn[x];
-//         var valueKvinner = sysselsatte[kommunenummer[i]].population.Kvinner[x];
-//         var total2 = valueMenn + valueKvinner;
-//         var b = -1; b < 11; b++;
-//         var cells = row22.insertCell(b);
-//         var cellsR2 = row33.insertCell(b);
-//
-//         cells.innerHTML += "<h5> " + x + ": </h5>";
-//         cells.appendChild(document.createTextNode(valueMenn));
-//         cellsR2.appendChild(document.createTextNode(valueKvinner));
-//
-//       }
-//     }
-//   };
-// }
-
-// var table1 = document.getElementsByClassName("sammenligningTable1")[0];
-// var table2 = document.getElementsByClassName("sammenligningTable2")[0];
-//
-// var farger = function() {
-//   for (row in table1.rows) {
-//     console.log(row);
-//     for (cell in row) {
-//       for (data in cell.value) {
-//         console.log(data);
-//       }
-//
-//       if (sammenlign.total2 > sammenlign.total1) {
-//         console.log(sammenlign.total1 + " " + sammenlign.total2);
-//         cells.classList.replace("high" ,"low");
-//       }
-//       if (sammenlign.total1 > sammenlign.total2) {
-//         console.log(sammenlign.total1 + " " + sammenlign.total2);
-//         cells.classList.replace("high" ,"low");
-//     }
-//   }
-//   }
-// }
-//
-
-
-
-
-
-
-
-
-
-
-//

@@ -120,6 +120,7 @@ td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 5px;
+  width: 500px;
 }
 
 footer {
@@ -165,7 +166,6 @@ only screen and (max-width: 760px),
   th:first-child, td:first-child {
     text-align: left;
   }
-
 
 	thead tr {
 		position: absolute;
