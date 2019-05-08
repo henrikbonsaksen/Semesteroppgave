@@ -1,7 +1,7 @@
 body {
   font-family: sans-serif;
   font-size: 14px;
-  background-color: lightgray+1;
+  background-color: #dddd;
 }
 
 .container {
@@ -9,7 +9,7 @@ body {
   height: auto;
   background-color: rgba(100, 180, 180, 0.5);
   padding: 2% 2%;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0px 5px 10px gray;
 }
 
@@ -21,8 +21,10 @@ body {
   position: relative;
   height: 100px;
   max-width: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
   background: linear-gradient(90deg, rgba(2,66,111,1) 0%, rgba(67,180,180,1) 55%, rgba(26,154,112,0.9164040616246498) 100%);
+  box-shadow: 0px 5px 10px lightblue;
+
   /* background-image: url("../img/header.jpg"); */
 }
 
@@ -92,9 +94,10 @@ li a {
 }
 
 table {
+  width: 100%;
+  table-layout: auto;
+  display: block;
   font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: auto;
   /* overflow-x:auto; */
   border: 5px solid rgba(55, 160, 200, 1);
 
@@ -105,7 +108,7 @@ table {
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: rgba(55, 160, 200, 0.2);
 }
 
 
@@ -147,6 +150,8 @@ footer {
   background-color: lightgreen;
 }
 
+
+
 @media
 only screen and (max-width: 760px),
 (min-device-width: 760px) and (max-device-width: 760px)  {
@@ -157,6 +162,9 @@ only screen and (max-width: 760px),
     flex-direction: column;
 	}
 
+  th:first-child, td:first-child {
+    text-align: left;
+  }
 
 
 	thead tr {
@@ -178,6 +186,6 @@ only screen and (max-width: 760px),
 		position: absolute;
 		top: 6px;
 		left: 6px;
-		width: 45%;
+		width: 100%;
 		padding-right: 10px;
 	}

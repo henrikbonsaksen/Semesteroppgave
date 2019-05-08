@@ -382,6 +382,7 @@ var sammenlign2 = function(input) {
   var table2 = document.getElementsByClassName("sammenligningTable2");
   // console.log(table1, table2);
   // console.log(table1[0]);
+  
 }
 
 
