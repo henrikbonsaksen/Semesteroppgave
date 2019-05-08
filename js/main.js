@@ -256,11 +256,7 @@ var sammenlign = function(input, input2) {
   tbl.setAttribute('border', '1');
 
   var tbdy = document.createElement('tbody');
-  tbl.className = "sammenligningTable";
-
-  for (var x = 1; x < 3; x++) {
-    tbl.classList.add(x + "");
-  }
+  tbl.className = "sammenligningTable1";
 
   for (var i = 0; i < kommunenavn.length; i++) {
     var knavn = kommunenavn[i];
@@ -317,6 +313,82 @@ var sammenlign = function(input, input2) {
 
 }
 
+//Sammenligning søk funksjon
+var sammenlign2 = function(input) {
+  this.input = input;
+  var kommunenavn = befolkning.getNames();
+  var kommunenummer = befolkning.getIDs();
+  var info = befolkning.kommuneinfo;
+  var sysselsatte = syssel.kommuneinfo;
+  var utd = utdanning.kommuneinfo;
+
+  var headertable = document.getElementsByClassName("headertable")[0];
+  var headertable2 = document.getElementsByClassName("headertable2")[0];
+
+  // table 1
+  var body = document.getElementsByTagName('div')[8];
+  var tbl = document.createElement('table');
+  tbl.classList.add("flex");
+  tbl.style.width = '100%';
+  tbl.setAttribute('border', '1');
+
+  var tbdy = document.createElement('tbody');
+  tbl.className = "sammenligningTable2";
+
+  for (var i = 0; i < kommunenavn.length; i++) {
+    var knavn = kommunenavn[i];
+    if (kommunenavn[i] === this.input || kommunenummer[i] === this.input) {
+
+      // console.log(kommunenavn[i])
+      var navn = document.createElement('tr');
+      navn.appendChild(document.createTextNode(knavn))
+      var skille = document.createElement('tr');
+      skille.appendChild(document.createTextNode("Sysselatte: "))
+      var menn = document.createElement('tr');
+      menn.appendChild(document.createTextNode("% Menn: "))
+      var kvinner = document.createElement('tr');
+      kvinner.appendChild(document.createTextNode("% Kvinner: "))
+
+      for (var j = 2007; j < 2018; j++) {
+        var valueMenn = sysselsatte[kommunenummer[i]].population.Menn[j];
+        var valueKvinner = sysselsatte[kommunenummer[i]].population.Kvinner[j];
+        var years = document.createElement('td')
+        var yeardata = years.appendChild(document.createTextNode("År " + j));
+
+        var menndata = document.createElement('td');
+        menndata.appendChild(document.createTextNode(valueMenn))
+        var kvinnedata = document.createElement('td');
+        kvinnedata.appendChild(document.createTextNode(valueKvinner))
+
+        i == 2 && j == 2 ? td.setAttribute('rowSpan', '2') : null;
+        navn.appendChild(years)
+        menn.appendChild(menndata)
+        kvinner.appendChild(kvinnedata)
+        }
+        tbdy.appendChild(navn);
+        tbdy.appendChild(skille);
+        tbdy.appendChild(menn);
+        tbdy.appendChild(kvinner);
+      }
+
+      tbl.appendChild(tbdy);
+      body.appendChild(tbl);
+  };
+}
+
+var table1 = document.getElementsByClassName("sammenligningTable1");
+var table2 = document.getElementsByClassName("sammenligningTable2");
+console.log(table1.rows);
+
+// for (var e = 0; e < table1[0].rows[2].cells.length; e++) {
+//   var menncell = table1[0].rows[2].cells[e].lastChild;
+//   var kvinncell = table1[0].rows[3].cells[e].lastChild;
+//   // console.log("menn:", menncell)
+//   // console.log("kvinner:", kvinncell)
+//   if (menncell < kvinncell){
+//     menn.classList.add("bois");
+//   }
+// }
 
 //   for (var i = 0; i < kommunenavn.length; i++) {
 //     if (kommunenavn[i] === input2 || kommunenummer[i] === input2) {
