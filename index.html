@@ -59,13 +59,8 @@
         <h2>Detaljer</h2>
 
         <div>
-        <h5>Her kan du gjøre søk som gir flere detaljer om en kommune.</h5>
-          <p>Det er detaljer om som:</p>
-          <p>Kommunenavn</p>
-          <p>Kommunenummer</p>
-          <p>Siste målte befolkning</p>
-          <p>Siste målte statistikk for sysselseting</p>
-          <p>Siste målte statistikk for høyere utdanning  (antall og prosent).</p>
+        <h4>Her kan du gjøre søk som gir flere detaljer om en kommune.</h4>
+          <p>Søk enten etter kommunenummer eller navn.</p>
         </div>
             <div>
               <input type="search" id="detaljer" value="">
@@ -83,17 +78,17 @@
     <div class="infoBox hidden"  id="Sammenligning">
       <br>
       <h2>Sammenligning</h2>
-
-
         <div>
           <p> Her kan du gjøre sammenlingnede søk på kommuner: </p>
+          <p> Høyeste vekst i % blir markert med grønn bakgrunn. </p>
         </div>
       <div>
-        <input type="search" id="s1" placeholder="Første kommune" value="Giske">
-        <input type="search" id="s2" placeholder="Andre kommune" value="Bergen">
+        <input type="search" id="s1" placeholder="Første kommune" value="2015">
+        <input type="search" id="s2" placeholder="Andre kommune" value="2017">
         <button onclick="sammenlign(s1.value), sammenlign2(s2.value), highlighter()"> Sammenlign </button>
+
         <br>
-        <div id="div8">
+        <div class="flex" id="div8">
         </div>
       </div>
       <br>
