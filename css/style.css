@@ -22,7 +22,8 @@ body {
   height: 100px;
   max-width: 100%;
   border-radius: 10px;
-  background: linear-gradient(90deg, rgba(2,66,111,1) 0%, rgba(67,180,180,1) 55%, rgba(26,154,112,0.9164040616246498) 100%);
+  background: linear-gradient(90deg, rgba(2,66,111,1) 0%,
+  rgba(67,180,180,1) 55%, rgba(26,154,112,0.9164040616246498) 100%);
   box-shadow: 0px 5px 10px lightblue;
 
   /* background-image: url("../img/header.jpg"); */
@@ -31,7 +32,8 @@ body {
 
 .headerimg:hover {
   transition: 0.8s;
-  background: linear-gradient(90deg, rgba(2,66,111,1) 23%, rgba(67,180,180,1) 72%, rgba(26,154,112,1) 100%);
+  background: linear-gradient(90deg, rgba(2,66,111,1) 23%,
+  rgba(67,180,180,1) 72%, rgba(26,154,112,1) 100%);
   opacity: 0.9;
 }
 
@@ -94,11 +96,9 @@ li a {
 }
 
 table {
-  table-layout: auto;
   font-family: arial, sans-serif;
   background-color: white;
   border: 5px solid rgba(55, 160, 200, 1);
-
 }
 
 tr:nth-child(even) {
@@ -121,7 +121,6 @@ th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 5px;
-  width: 500px;
 }
 
 footer {
@@ -137,7 +136,17 @@ footer {
   box-shadow: 0px 5px 10px gray;
 }
 
-.flex {
+.sammenligning table {
+  overflow-x: auto;
+
+}
+.sammenligning td{
+  width: 300px;
+  font-size: 10px;
+
+}
+.sammenligning tr{
+  font-size: 10px;
 }
 
 .best-category {
@@ -145,9 +154,13 @@ footer {
   font-weight: bold;
 }
 
+div {
+  box-sizing: border-box;
+}
 
-@media screen and (max-width: 768px){
-    table {
+/* media screen for oversikt/detaljer */
+@media screen and (max-width: 1138px){
+    .details table {
       display: block;
       width: 100%;
       max-width: 100%;
@@ -155,31 +168,54 @@ footer {
       background-color: transparent;
     }
 
-    thead {
+    .details thead {
       /* display: none; */
     }
-/*
-    thead, .navn {
+
+    .details tr {
+
+    }
+
+    .details td {
+
+    }
+
+    .details td{
       display: block;
-      column-span: 1;
+      width: 300px;
     }
-    thead, .num {
+    .details tr{
+      display: block;
+    }
+
+    .details .flex tr {
       display: flex;
-      column-span: 1;
-
+      flex-flow: row wrap;
     }
-    thead, .bef {
+
+}
+
+
+/* media screen for sammenligning */
+@media screen and (max-width: 770px){
+    .sammenligning table {
       display: flex;
-      column-span: 1;
+        flex-flow: row wrap;
+        transition: 0.5s;
+    }
 
-    } */
+    .sammenligning thead {
+      /* display: none; */
+    }
 
-    tr {
+
+    .sammenligning td{
+      display: block;
+    }
+    .sammenligning tr{
+      display: block;
 
     }
 
-    td {
-
-    }
 
 }
