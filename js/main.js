@@ -79,11 +79,10 @@ function Befolkning(url) {
 
       if (self.onload) {
         self.onload();
+        // test for rekkefølge på datainnlasting
         console.log("Ready");
       }
     });
-    // test for rekkefølge på datainnlasting
-    // console.log(self);
   }
 };
 
