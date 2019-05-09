@@ -104,8 +104,8 @@ utdanning.onload = function() {
 syssel.onload = function() {
   console.log("sysselsatte_wildboy lastes")
 };
-// sender en forespørsel om å laste ned datasettet
-// blir lastet i denne rekkefølgen
+// sender en forespørsel hver om å laste ned datasettet
+// og laster de ned
 befolkning.load();
 utdanning.load();
 syssel.load();
