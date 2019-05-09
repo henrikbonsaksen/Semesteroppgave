@@ -94,14 +94,18 @@ var syssel = new Befolkning(sysselsatte_wildboy);
 
 befolkning.onload = function() {
   populateOversiktView();
+  console.log("befolkning_wildboy lastet")
 }
 
+utdanning.onload = function() {
+  console.log("utdanning_wildboy lastet")
+}
+
+syssel.onload = function() {
+  console.log("sysselsatte_wildboy lastet")
+}
 // sender en forespørsel om å laste ned datasettet
 // blir lastet i denne rekkefølgen
 befolkning.load();
 utdanning.load();
 syssel.load();
-
-if (befolkning && utdanning && syssel) {
-  console.log("tjohei");
-};
