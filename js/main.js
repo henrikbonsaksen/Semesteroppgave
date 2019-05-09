@@ -28,7 +28,6 @@ function performGetRequest(url, callback) {
     // om readyState == 4 er det operasjonen utført
     if (request.readyState == 4 && request.status == 200) {
       callback(request.response);
-      console.log("Ready");
     }
   }
   request.open("GET", url, true);
@@ -80,12 +79,13 @@ function Befolkning(url) {
 
       if (self.onload) {
         self.onload();
+        console.log("Ready");
       }
     });
     // test for rekkefølge på datainnlasting
     // console.log(self);
   }
-}
+};
 
 // initialisering av objektene
 var befolkning = new Befolkning(befolkning_wildboy);
@@ -94,16 +94,16 @@ var syssel = new Befolkning(sysselsatte_wildboy);
 
 befolkning.onload = function() {
   populateOversiktView();
-  console.log("befolkning_wildboy lastet")
+  console.log("befolkning_wildboy lastes")
 }
 
 utdanning.onload = function() {
-  console.log("utdanning_wildboy lastet")
+  console.log("utdanning_wildboy lastes")
 }
 
 syssel.onload = function() {
-  console.log("sysselsatte_wildboy lastet")
-}
+  console.log("sysselsatte_wildboy lastes")
+};
 // sender en forespørsel om å laste ned datasettet
 // blir lastet i denne rekkefølgen
 befolkning.load();
