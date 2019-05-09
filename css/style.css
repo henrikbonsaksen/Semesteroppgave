@@ -142,7 +142,7 @@ footer {
   flex-direction: row;
 }
 
-.highlighted {
+.best-category {
   color: rgba(0, 230, 150, 1);
   font-weight: bold;
 }
