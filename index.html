@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css"/>
     <title>Semesteroppgave</title>
   </head>
 
@@ -44,8 +43,19 @@
         </p>
       </div>
 
-        <table class="oversikt">
-
+        <table >
+          <thead>
+            <tr>
+              <th class="navn">Navn</th>
+              <th class="num">Nummer</th>
+              <th class="bef">Befolkning 2018</th>
+            </tr>
+          </thead>
+          <tbody class="oversikt">
+            <tr>
+              <td id="oversiktdata"></td>
+            </tr>
+          </tbody>
         </table>
 
 
@@ -105,5 +115,7 @@
 
 
   <script type="text/javascript" src="js/main.js"></script>
+  <link rel="stylesheet" href="css/style.css"/>
+
   </body>
 </html>

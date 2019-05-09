@@ -25,31 +25,22 @@ function showBox(id) {
 var populateDetaljerView = function() {
   //tables:
   var oversiktTable = document.getElementsByClassName("oversikt")[0];
+  var data = document.getElementById("oversiktdata");
 
   var kommunenavn = befolkning.getNames();
   var kommunenummer = befolkning.getIDs();
   var info = befolkning.kommuneinfo;
-
-  // console.log(info)
-
-  // var headername = row.insertCell(0);
-  // var headername2 = row.insertCell(1);
-  // var headername3 = row.insertCell(2);
-  // headername.innerHTML = "<h4>Navn </h4>";
-  // headername2.innerHTML =  "<h4> Kommunenummer </h4>";
-  // headername3.innerHTML = "<h4> Befolkning 2018 </h4>";
-
 
   for (var i = 0; i < kommunenavn.length; i++) {
     var row = oversiktTable.insertRow(0);
     var nameCell = row.insertCell(0);
     var idCell = row.insertCell(1);
     var infoCell = row.insertCell(2);
-    var bef = (info[kommunenummer[i]].population.Menn[2018]+info[kommunenummer[i]].population.Kvinner[2018])
+    var data = (info[kommunenummer[i]].population.Menn[2018]+info[kommunenummer[i]].population.Kvinner[2018])
 
-    nameCell.innerHTML = "Navn: " + kommunenavn[i];
-    idCell.innerHTML = "Kommunenummer: " + kommunenummer[i];
-    infoCell.innerHTML = "Befolkning 2018: " + bef;
+    nameCell.innerHTML = kommunenavn[i];
+    idCell.innerHTML = kommunenummer[i];
+    infoCell.innerHTML = data;
   };
 }
 
@@ -63,6 +54,8 @@ var detaljer = function() {
   var info = befolkning.kommuneinfo;
   var sysselsatte = syssel.kommuneinfo;
   var utd = utdanning.kommuneinfo;
+  detaljer.classList.add('flex');
+  detaljer.classList.add('table-responsive-vertical');
   // console.log(sysselsatte);
 
   //for løkke som lager celler og rader i tabellen
@@ -144,7 +137,7 @@ var detaljer = function() {
         var cells = row6.insertCell(b);
         var cells2 = row7.insertCell(b);
         var cells3 = row8.insertCell(b);
-        cells.innerHTML += "<h4>Befolkning: " + x + "</h4>" + info[kommunenummer[i]].population.Menn[x]
+        cells.innerHTML += "<h4>Befolkning " + x + " : </h4>" + info[kommunenummer[i]].population.Menn[x]
         + " menn og " + info[kommunenummer[i]].population.Kvinner[x] + " kvinner";
 
         cells2.innerHTML += "<h4>Utdanning UNI / høyskole i " + x + ": </h4>" + utd[kommunenummer[i]].population["04a"].Menn[x]
@@ -235,76 +228,6 @@ befolkning.load();
 utdanning.load();
 syssel.load();
 
-//Sammenligning søk funksjon
-// var sammenlign = function(input, input2) {
-//   this.input = input;
-//   this.input2 = input2;
-//   var kommunenavn = befolkning.getNames();
-//   var kommunenummer = befolkning.getIDs();
-//   var info = befolkning.kommuneinfo;
-//   var sysselsatte = syssel.kommuneinfo;
-//   var utd = utdanning.kommuneinfo;
-//
-//   var headertable = document.getElementsByClassName("headertable")[0];
-//   var headertable2 = document.getElementsByClassName("headertable2")[0];
-//
-//   // table 1
-//   var body = document.getElementsByTagName('div')[8];
-//   var tbl = document.createElement('table');
-//   tbl.classList.add("flex");
-//   tbl.style.width = '100%';
-//   tbl.setAttribute('border', '1');
-//
-//   var tbdy = document.createElement('tbody');
-//   tbl.className = "sammenligningTable";
-//
-//   for (var x = 1; x < 3; x++) {
-//     tbl.classList.add(x + "");
-//   }
-//
-//   for (var i = 0; i < kommunenavn.length; i++) {
-//     var knavn = kommunenavn[i];
-//     if (kommunenavn[i] === this.input || kommunenummer[i] === this.input) {
-//
-//       // console.log(kommunenavn[i])
-//       var navn = document.createElement('tr');
-//       navn.appendChild(document.createTextNode(knavn))
-//       var skille = document.createElement('tr');
-//       skille.appendChild(document.createTextNode("Sysselatte: "))
-//       var menn = document.createElement('tr');
-//       menn.appendChild(document.createTextNode("% Menn: "))
-//       var kvinner = document.createElement('tr');
-//       kvinner.appendChild(document.createTextNode("% Kvinner: "))
-//
-//       for (var j = 2007; j < 2018; j++) {
-//         var valueMenn = sysselsatte[kommunenummer[i]].population.Menn[j];
-//         var valueKvinner = sysselsatte[kommunenummer[i]].population.Kvinner[j];
-//         var years = document.createElement('td')
-//         var yeardata = years.appendChild(document.createTextNode("År " + j));
-//
-//         var menndata = document.createElement('td');
-//         menndata.appendChild(document.createTextNode(valueMenn))
-//         var kvinnedata = document.createElement('td');
-//         kvinnedata.appendChild(document.createTextNode(valueKvinner))
-//
-//         i == 2 && j == 2 ? td.setAttribute('rowSpan', '2') : null;
-//         navn.appendChild(years)
-//         menn.appendChild(menndata)
-//         kvinner.appendChild(kvinnedata)
-//         }
-//         tbdy.appendChild(navn);
-//         tbdy.appendChild(skille);
-//         tbdy.appendChild(menn);
-//         tbdy.appendChild(kvinner);
-//       }
-//
-//       tbl.appendChild(tbdy);
-//       body.appendChild(tbl);
-//   };
-//
-// }
-
-
 var getProsentpoengEndring = function(nyVerdi, gammelVerdi) {
   return (nyVerdi - gammelVerdi) / gammelVerdi * 100;
 }
@@ -394,6 +317,8 @@ var opprettTabell = function(utvikling, sammenlignendeUtvikling) {
       mennCell.classList.add('best-category');
     }
   }
+  tabell.classList.add("table-responsive-vertical");
+
 
   return tabell;
 }
@@ -414,3 +339,78 @@ var visSysselsettingSammenligning = function(kommunenummer1, kommunenummer2) {
 syssel.onload = function() {
   visSysselsettingSammenligning(s1.value, s2.value);
 }
+
+
+
+
+
+
+
+//første forsøk på Sammenligning søk funksjon
+// var sammenlign = function(input, input2) {
+//   this.input = input;
+//   this.input2 = input2;
+//   var kommunenavn = befolkning.getNames();
+//   var kommunenummer = befolkning.getIDs();
+//   var info = befolkning.kommuneinfo;
+//   var sysselsatte = syssel.kommuneinfo;
+//   var utd = utdanning.kommuneinfo;
+//
+//   var headertable = document.getElementsByClassName("headertable")[0];
+//   var headertable2 = document.getElementsByClassName("headertable2")[0];
+//
+//   // table 1
+//   var body = document.getElementsByTagName('div')[8];
+//   var tbl = document.createElement('table');
+//   tbl.classList.add("flex");
+//   tbl.style.width = '100%';
+//   tbl.setAttribute('border', '1');
+//
+//   var tbdy = document.createElement('tbody');
+//   tbl.className = "sammenligningTable";
+//
+//   for (var x = 1; x < 3; x++) {
+//     tbl.classList.add(x + "");
+//   }
+//
+//   for (var i = 0; i < kommunenavn.length; i++) {
+//     var knavn = kommunenavn[i];
+//     if (kommunenavn[i] === this.input || kommunenummer[i] === this.input) {
+//
+//       // console.log(kommunenavn[i])
+//       var navn = document.createElement('tr');
+//       navn.appendChild(document.createTextNode(knavn))
+//       var skille = document.createElement('tr');
+//       skille.appendChild(document.createTextNode("Sysselatte: "))
+//       var menn = document.createElement('tr');
+//       menn.appendChild(document.createTextNode("% Menn: "))
+//       var kvinner = document.createElement('tr');
+//       kvinner.appendChild(document.createTextNode("% Kvinner: "))
+//
+//       for (var j = 2007; j < 2018; j++) {
+//         var valueMenn = sysselsatte[kommunenummer[i]].population.Menn[j];
+//         var valueKvinner = sysselsatte[kommunenummer[i]].population.Kvinner[j];
+//         var years = document.createElement('td')
+//         var yeardata = years.appendChild(document.createTextNode("År " + j));
+//
+//         var menndata = document.createElement('td');
+//         menndata.appendChild(document.createTextNode(valueMenn))
+//         var kvinnedata = document.createElement('td');
+//         kvinnedata.appendChild(document.createTextNode(valueKvinner))
+//
+//         i == 2 && j == 2 ? td.setAttribute('rowSpan', '2') : null;
+//         navn.appendChild(years)
+//         menn.appendChild(menndata)
+//         kvinner.appendChild(kvinnedata)
+//         }
+//         tbdy.appendChild(navn);
+//         tbdy.appendChild(skille);
+//         tbdy.appendChild(menn);
+//         tbdy.appendChild(kvinner);
+//       }
+//
+//       tbl.appendChild(tbdy);
+//       body.appendChild(tbl);
+//   };
+//
+// }
