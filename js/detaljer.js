@@ -34,7 +34,7 @@ var detaljer = function() {
 
       var row4 = detaljer.insertRow(3);
       var c1r4 = row4.insertCell(0);
-      c1r4.innerHTML = "Historisk data: "
+      c1r4.innerHTML = "<h3>Historisk data: </h3>"
 
       var row6 = detaljer.insertRow(4);
       var row7 = detaljer.insertRow(5);
@@ -42,7 +42,7 @@ var detaljer = function() {
 
       // kommunenavn & kommunenummer
       nameCell.innerHTML ="<h4>Kommune: </h4>" + kommunenavn[i];
-      idCell.innerHTML = "<h4>K.nr: </h4>" + kommunenummer[i];
+      idCell.innerHTML = "<h4>Kommune.nr: </h4>" + kommunenummer[i];
 
       // BEFOLKNING
       c1r2.innerHTML = "<h4>Befolkning i 2018: </h4>" + (info[kommunenummer[i]].population.Menn[2018]

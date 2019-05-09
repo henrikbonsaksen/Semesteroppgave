@@ -3,7 +3,6 @@ var populateOversiktView = function() {
 
   // lokalisere plassering i html
   var oversiktTable = document.getElementsByClassName("oversikt")[0];
-  var data = document.getElementById("oversiktdata");
 
   // henting av datasett
   var kommunenavn = befolkning.getNames();
