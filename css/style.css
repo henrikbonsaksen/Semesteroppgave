@@ -1,7 +1,7 @@
 body {
   font-family: sans-serif;
   font-size: 14px;
-  background-color: #dddd;
+  background-color: rgba(100, 180, 180, 0.2);
 }
 
 .container {
@@ -98,7 +98,8 @@ li a {
 table {
   font-family: arial, sans-serif;
   background-color: white;
-  border: 5px solid rgba(55, 160, 200, 1);
+  padding-bottom: 2px;
+  padding-top: 2px;
 }
 
 tr:nth-child(even) {
@@ -106,9 +107,7 @@ tr:nth-child(even) {
 }
 
 
-h4 {
-  padding : 1px;
-}
+
 
 td {
   border: 1px solid #dddddd;
@@ -137,25 +136,35 @@ footer {
 }
 
 .sammenligning table {
-  overflow-x: auto;
 
 }
 .sammenligning td{
   width: 300px;
-  font-size: 10px;
+  font-size: 14px;
 
 }
 .sammenligning tr{
-  font-size: 10px;
+  font-size: 14px;
+}
+
+.sammenligning td td{
+  background-color: white;
+  display: block;
+  width: 55px;
 }
 
 .best-category {
-  color: rgba(0, 180, 130, 1);
-  font-weight: bold;
+  text-shadow: 1px 1px 2px green;
+  color: rgba(0, 130, 100, 1);
 }
 
 div {
   box-sizing: border-box;
+}
+
+.green {
+  text-shadow: 1px 1px 2px green;
+  color: rgba(0, 130, 100, 1);
 }
 
 /* media screen for oversikt/detaljer */
@@ -172,50 +181,57 @@ div {
       /* display: none; */
     }
 
-    .details tr {
-
-    }
-
-    .details td {
-
-    }
-
     .details td{
       display: block;
+      height: auto;
       width: 300px;
     }
     .details tr{
       display: block;
     }
 
+    .details tbody tr td h4 {
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      font-size: 14px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+
     .details .flex tr {
       display: flex;
       flex-flow: row wrap;
     }
-
 }
 
-
 /* media screen for sammenligning */
-@media screen and (max-width: 770px){
+@media screen and (max-width: 1236px){
     .sammenligning table {
-      display: flex;
-        flex-flow: row wrap;
-        transition: 0.5s;
     }
 
     .sammenligning thead {
       /* display: none; */
+      font-size: 16px;
+
     }
 
 
     .sammenligning td{
+      font-size: 16px;
+
+      width: 300px;
       display: block;
     }
     .sammenligning tr{
+      font-size: 16px;
+
       display: block;
-
+      width: 312px;
     }
-
+    .sammenligning td td{
+      font-size: 16px;
+      background-color: white;
+      display: block;
+      width: 200px;
+    }
 
 }

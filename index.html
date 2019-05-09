@@ -70,10 +70,10 @@
 
         <div>
         <h4>Her kan du gjøre søk som gir flere detaljer om en kommune.</h4>
-          <p>Søk enten etter kommunenummer eller navn.</p>
+
         </div>
             <div>
-              <input type="search" id="detaljer" value="">
+              <input type="search" id="detaljer" value="" placeholder="Kommunenummer">
               <button id="searchbtn" onclick="detaljer()">Søk</button>
               <br>
               <table class="detaljerTable details">
@@ -89,13 +89,13 @@
       <br>
       <h2>Sammenligning</h2>
         <div>
-          <p> Her kan du gjøre sammenlingnede søk på kommuner: </p>
-          <p> Høyeste vekst i % blir markert med grønn bakgrunn. </p>
+          <p> Her kan du sammenligne historisk utvikling i sysselsetting, mellom to kommuner. </p>
+          <p> Høyeste vekst i prosentpoeng vil markeres med <span class="green">grønn tekst.</span>  </p>
         </div>
       <div>
-        <input type="search" id="s1" placeholder="Første kommune" value="2015">
-        <input type="search" id="s2" placeholder="Andre kommune" value="2017">
-        <button onclick="visSysselsettingSammenligning(s1.value, s2.value)"> Sammenlign </button>
+        <input type="search" id="s1" placeholder="Første kommune" value="">
+        <input type="search" id="s2" placeholder="Andre kommune" value="">
+        <button onclick="visSysselsettingSammenligning(s1.value, s2.value)">Søk</button>
 
         <br>
         <div class="flex" id="div8">
@@ -111,13 +111,14 @@
 
   <footer>
     <br><br>
-    Oppgavebesvarelse i emnet INFO134
+    Oppgavebesvarelse i emnet INFO134.
   </footer>
 
 
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/sammenlign.js"></script>
   <script type="text/javascript" src="js/detaljer.js"></script>
+  <script type="text/javascript" src="js/oversikt.js"></script>
   <link rel="stylesheet" href="css/style.css"/>
 
   </body>
